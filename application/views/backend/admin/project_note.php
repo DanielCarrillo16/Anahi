@@ -7,7 +7,7 @@
 
 <?php echo form_open(site_url('admin/project_note/save/' . $row['project_code']), array(
         'class' => 'project-note-save'));?>
-<div class="col-md-7">
+<div class="col-md-6">
 	
 	<div class="panel panel-primary" data-collapsed="0">
                                             

@@ -9,7 +9,8 @@
 	foreach ($current_project as $row):
 
 ?>
- <div class="col-md-7">
+
+ <div class="col-md-6">
 
         <br><br>
 
@@ -17,7 +18,7 @@
 
            onclick="showAjaxModal('<?php echo site_url('modal/popup/project_historia_clinica_add/' . $project_code); ?>');">
 
-            <i class="entypo-plus"></i> Agregar historia clínica
+            <i class="entypo-plus"></i> Agregar Nota
 
         </a>
 
@@ -35,7 +36,7 @@
 
             <div class="panel-heading">
 
-                <div class="panel-title">Historia clínica</div>
+                <div class="panel-title">Nota</div>
 
 
 
@@ -49,7 +50,9 @@
 
                     <tr>
 
-                        <th>Descripción</th>
+                        <th>Titulo</th>
+
+                        <th>Nombre</th>
 
                         <th>Fecha</th>
 
@@ -80,6 +83,7 @@
                             <td><?php echo $row1['title']; ?></td>
 
                             
+                            <td><?php echo $row1['nombre_completo'];  ?></td>
 
                             <td style="width: 20%"><?php echo date('d M Y', $row1['timestamp']); ?></td>
 
@@ -87,46 +91,48 @@
 
                                 <?php
 
-                                $staff = $this->db->get_where('staff',array('staff_id'=>$row1['assigned_staff']));
+                                    $staff = $this->db->get_where('staff',array('staff_id'=>$row1['assigned_staff']));
 
-                                if($staff->num_rows()>0)
+                                    if($staff->num_rows()>0)
+
                                     echo $staff->row()->name;
-                                else 
-                                    echo "Ninguno";
 
                                 ?>
 
                             </td>
 
+
+                            
+
                             <td style="width: 20%">
 
                                 <a class="tooltip-default" style="color:#aaa;" data-toggle="tooltip"
 
-                                    data-placement="top" data-original-title="<?php echo get_phrase('view');?>"
+                                   data-placement="top" data-original-title="<?php echo get_phrase('view');?>"
 
-                                    onclick="showAjaxModal('<?php echo site_url('modal/popup/project_historia_clinica_view/' . $row1['project_historia_clinica_id'] . '/' . $project_code); ?>');">
+                                   href="#" onclick="showAjaxModal('<?php echo site_url('modal/popup/project_historia_clinica_view/' . $row1['project_historia_clinica_id']); ?>')">
 
-                                    <i class="entypo-info"></i>
-
-                                </a>
-
-                                <a class="tooltip-default" style="color:#aaa;cursor:pointer;" data-toggle="tooltip"
-
-                                    data-placement="top" data-original-title="<?php echo get_phrase('edit'); ?>"
-
-                                    onclick="showAjaxModal('<?php echo site_url('modal/popup/project_historia_clinica_edit/' . $row1['project_historia_clinica_id'] . '/' . $project_code); ?>');">
-
-                                    <i class="entypo-pencil"></i>
+                                            <i class="entypo-info"></i>
 
                                 </a>
 
                                 <a class="tooltip-default" style="color:#aaa;cursor:pointer;" data-toggle="tooltip"
 
-                                    data-placement="top" data-original-title="<?php echo get_phrase('delete'); ?>"
+                                       data-placement="top" data-original-title="<?php echo get_phrase('edit'); ?>"
 
-                                    onclick="confirm_modal('<?php echo site_url('admin/project_historia_clinica/delete/' . $row1['project_historia_clinica_id']); ?>', '<?php echo site_url('admin/reload_projectroom_historia_clinica/' . $project_code); ?>');">
+                                       onclick="showAjaxModal('<?php echo site_url('modal/popup/project_historia_clinica_edit/' . $row1['project_historia_clinica_id'] . '/' . $project_code); ?>');">
 
-                                    <i class="entypo-trash"></i>
+                                        <i class="entypo-pencil"></i>
+
+                                </a>
+
+                                <a class="tooltip-default" style="color:#aaa;cursor:pointer;" data-toggle="tooltip"
+
+                                       data-placement="top" data-original-title="<?php echo get_phrase('delete'); ?>"
+
+                                       onclick="confirm_modal('<?php echo site_url('admin/project_historia_clinica/delete/' . $row1['project_historia_clinica_id']); ?>', '<?php echo site_url('admin/reload_projectroom_historia_clinica/' . $project_code); ?>');">
+
+                                        <i class="entypo-trash"></i>
 
                                 </a>
 
@@ -697,12 +703,6 @@ function reload_data(url)
 </script>
 
 <script src="<?php echo base_url('assets/js/neon-custom-ajax.js');?>"></script>
-<!-- calling ajax form submission plugin for specific form -->
-<script src="<?php echo base_url('assets/js/ajax-form-submission.js');?>"></script>
-
-<script src="<?php echo base_url('assets/js/neon-custom-ajax.js');?>"></script>
-<script type="text/javascript"></script>
 
 <?php endforeach;?>
-
 

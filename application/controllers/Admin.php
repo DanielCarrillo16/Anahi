@@ -576,15 +576,6 @@ class Admin extends CI_Controller
         }
     }
 
-    function project_milestone_services($id='')
-    {
-        $amount = $this->crud_model->get_amount_service($id);
-        
-        foreach($amount->result() as $row){
-            echo $row->precio;
-        }
-    }
-
     // function for emailing the milestone invoice to the associated client
     function email_milestone_invoice($project_milestone_id)
     {

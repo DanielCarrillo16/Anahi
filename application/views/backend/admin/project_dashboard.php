@@ -2,7 +2,7 @@
 $current_project = $this->db->get_where('project' , array('project_code' => $project_code))->result_array();
 foreach ($current_project as $row): ?>
 
-    <div class="col-md-10" style="padding: 0px;">
+    <div class="col-md-9" style="padding: 0px;">
 
         <div class="col-md-4">
             <div class="tile-title tile-cyan">

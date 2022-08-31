@@ -414,6 +414,9 @@ class Crud_model extends CI_Model
         if ($this->input->post('staffs') != "")
             foreach ($this->input->post('staffs') as $row)
                 $data['staffs'] .= $row . ',';
+        if ($this->input->post('servicios') != "")
+            foreach ($this->input->post('servicios') as $row)
+                $data['servicios'] .= $row . ',';
 
         $this->db->insert('project', $data);
         $project_code = $this->db->get_where('project', array(
@@ -446,6 +449,10 @@ class Crud_model extends CI_Model
             foreach ($this->input->post('staffs') as $row)
                 $data['staffs'] .= $row . ',';
 
+        if ($this->input->post('servicios') != "")
+            foreach ($this->input->post('servicios') as $row)
+                $data['servicios'] .= $row . ',';
+
         $this->db->where('project_code', $project_code);
         $this->db->update('project', $data);
     }
@@ -460,16 +467,6 @@ class Crud_model extends CI_Model
         $this->db->delete('project_milestone');
         $this->db->where('project_code', $project_code);
         $this->db->delete('project');
-    }
-
-    function get_amount_service($id)
-    {
-        $this->db->select('*');
-        $this->db->from('servicios');
-        $this->db->where('servicios_id', $id);
-        $amount = $this->db->get();
-
-        return $amount;
     }
 
     function create_project_task($project_code = '')
@@ -886,9 +883,7 @@ class Crud_model extends CI_Model
    
 
     /// historia clinica
-    function create_project_historia_clinica($project_code = '')
-    {
-        $data['project_code']           = $project_code;
+/*         $data['project_code']           = $project_code;
         $data['nombre_completo']        = $this->input->post('nombre_completo');
         $data['title']                  = $this->input->post('title');
         $data['nacimiento']             = $this->input->post('nacimiento');
@@ -914,65 +909,202 @@ class Crud_model extends CI_Model
         $data['rutina_piel']            = $this->input->post('rutina_piel');
         $data['notas']                  = $this->input->post('notas');
         $data['assigned_staff']         = $this->input->post('assigned_staff');
-        // $data['user_type']              = $this->session->userdata('login_type');
-        // $data['user_id']                = $this->session->userdata('login_user_id');
-        $data['timestamp']              = strtotime(date("d M,Y"));
+        $data['user_type']              = $this->session->userdata('login_type');
+        $data['user_id']                = $this->session->userdata('login_user_id');
+        $data['timestamp']              = strtotime(date("d M,Y")); */
         
+
+
+        function create_project_historia_clinica($project_code = ''){
+            $data['project_code']               = $project_code;
+            $data['title']                      = $this->input->post('title');
+            $data['nombre_completo']            = $this->input->post('nombre_completo');
+            $data['nacimiento']                 = $this->input->post('nacimiento');
+            $data['nacionalidad']               = $this->input->post('nacionalidad');
+            $data['sexo']                       = $this->input->post('sexo');
+            $data['genero']                     = $this->input->post('genero');
+            $data['regla']                      = $this->input->post('regla');
+            $data['embarazo']                   = $this->input->post('embarazo');
+            $data['menopausia']                 = $this->input->post('menopausia');
+            $data['estatura']                   = $this->input->post('estatura');
+            $data['peso']                       = $this->input->post('peso');
+            $data['estado_civil']               = $this->input->post('estado_civil');
+            $data['grado_estudios']             = $this->input->post('grado_estudios');
+            $data['ocupacion']                  = $this->input->post('ocupacion');
+            $data['email']                      = $this->input->post('email');
+            $data['motivo_consulta']            = $this->input->post('motivo_consulta');
+            $data['alergias']                   = $this->input->post('alergias');
+            $data['enfermedades_cronicas']      = $this->input->post('enfermedades_cronicas');
+            $data['farmacos_actuales']          = $this->input->post('farmacos_actuales');
+            $data['suplementos']                = $this->input->post('suplementos');
+            $data['cirujias_previas']           = $this->input->post('cirujias_previas');
+            $data['tratamientos_esteticos']     = $this->input->post('tratamientos_esteticos');
+            $data['rutina_piel']                = $this->input->post('rutina_piel');
+            $data['madre_diabetes']             = $this->input->post('madre_diabetes');
+            $data['madre_hipertension']         = $this->input->post('madre_hipertension');
+            $data['madre_lupus']                = $this->input->post('madre_lupus');
+            $data['madre_notas']                = $this->input->post('madre_notas');
+            $data['padre_diabetes']             = $this->input->post('padre_diabetes');
+            $data['padre_hipertension']         = $this->input->post('padre_hipertension');
+            $data['padre_lupus']                = $this->input->post('padre_lupus');
+            $data['padre_notas']                = $this->input->post('padre_notas');
+            $data['hermanos_diabetes']          = $this->input->post('hermanos_diabetes');
+            $data['hermanos_hipertension']      = $this->input->post('hermanos_hipertension');
+            $data['hermanos_lupus']             = $this->input->post('hermanos_lupus');
+            $data['hermanos_notas']             = $this->input->post('hermanos_notas');
+            $data['alcohol']                    = $this->input->post('alcohol');
+            $data['alcohol_notas']              = $this->input->post('alcohol_notas');
+            $data['tabaco']                     = $this->input->post('tabaco');
+            $data['tabaco_notas']               = $this->input->post('tabaco_notas');
+            $data['sustancias']                 = $this->input->post('sustancias');  
+            $data['sustancias_notas']           = $this->input->post('sustancias_notas');
+            $data['hipertension']               = $this->input->post('hipertension');
+            $data['hipertension_notas']         = $this->input->post('hipertension_notas');
+            $data['diabetes']                   = $this->input->post('diabetes');
+            $data['diabetes_notas']             = $this->input->post('diabetes_notas');   
+            $data['herpes']                     = $this->input->post('herpes');
+            $data['herpes_notas']               = $this->input->post('herpes_notas');
+            $data['asma']                       = $this->input->post('asma');
+            $data['asma_notas']                 = $this->input->post('asma_notas');
+            $data['autoinmunes']                = $this->input->post('autoinmunes');
+            $data['autoinmunes_notas']          = $this->input->post('autoinmunes_notas');
+            $data['vacunas']                    = $this->input->post('vacunas');
+            $data['vacunas_notas']              = $this->input->post('vacunas_notas');
+            $data['cicatrizacion']              = $this->input->post('cicatrizacion');
+            $data['cicatrizacion_notas']        = $this->input->post('cicatrizacion_notas');
+            $data['enfermedades_piel']          = $this->input->post('enfermedades_piel');
+            $data['enfermedades_piel_notas']    = $this->input->post('enfermedades_piel_notas');
+            $data['ejercicio']                  = $this->input->post('ejercicio');
+            $data['ejercicio_notas']            = $this->input->post('ejercicio_notas');
+            $data['anticonceptivo']             = $this->input->post('anticonceptivo');
+            $data['anticonceptivo_notas']       = $this->input->post('anticonceptivo_notas');   
+            $data['notas']                      = $this->input->post('notas');
+            $data['assigned_staff']             = $this->input->post('assigned_staff');
+            $data['timestamp']                  = strtotime(date("d M,Y"));
+                
+            $this->db->insert('project_historia_clinica', $data);
+        }
+    
+        function update_project_historia_clinica($project_historia_clinica_id = '')
+        {
+            $data['title']                      = $this->input->post('title');
+            $data['nombre_completo']            = $this->input->post('nombre_completo');
+            $data['nacimiento']                 = $this->input->post('nacimiento');
+            $data['nacionalidad']               = $this->input->post('nacionalidad');
+            $data['sexo']                       = $this->input->post('sexo');
+            $data['genero']                     = $this->input->post('genero');
+            $data['regla']                      = $this->input->post('regla');
+            $data['embarazo']                   = $this->input->post('embarazo');
+            $data['menopausia']                 = $this->input->post('menopausia');
+            $data['estatura']                   = $this->input->post('estatura');
+            $data['peso']                       = $this->input->post('peso');
+            $data['estado_civil']               = $this->input->post('estado_civil');
+            $data['grado_estudios']             = $this->input->post('grado_estudios');
+            $data['ocupacion']                  = $this->input->post('ocupacion');
+            $data['email']                      = $this->input->post('email');
+            $data['motivo_consulta']            = $this->input->post('motivo_consulta');
+            $data['alergias']                   = $this->input->post('alergias');
+            $data['enfermedades_cronicas']      = $this->input->post('enfermedades_cronicas');
+            $data['farmacos_actuales']          = $this->input->post('farmacos_actuales');
+            $data['suplementos']                = $this->input->post('suplementos');
+            $data['cirujias_previas']           = $this->input->post('cirujias_previas');
+            $data['tratamientos_esteticos']     = $this->input->post('tratamientos_esteticos');
+            $data['rutina_piel']                = $this->input->post('rutina_piel');
+            $data['madre_diabetes']             = $this->input->post('madre_diabetes');
+            $data['madre_hipertension']         = $this->input->post('madre_hipertension');
+            $data['madre_lupus']                = $this->input->post('madre_lupus');
+            $data['madre_notas']                = $this->input->post('madre_notas');
+            $data['padre_diabetes']             = $this->input->post('padre_diabetes');
+            $data['padre_hipertension']         = $this->input->post('padre_hipertension');
+            $data['padre_lupus']                = $this->input->post('padre_lupus');
+            $data['padre_notas']                = $this->input->post('padre_notas');
+            $data['hermanos_diabetes']          = $this->input->post('hermanos_diabetes');
+            $data['hermanos_hipertension']      = $this->input->post('hermanos_hipertension');
+            $data['hermanos_lupus']             = $this->input->post('hermanos_lupus');
+            $data['hermanos_notas']             = $this->input->post('hermanos_notas');
+            $data['alcohol']                    = $this->input->post('alcohol');
+            $data['alcohol_notas']              = $this->input->post('alcohol_notas');
+            $data['tabaco']                     = $this->input->post('tabaco');
+            $data['tabaco_notas']               = $this->input->post('tabaco_notas');
+            $data['sustancias']                 = $this->input->post('sustancias');  
+            $data['sustancias_notas']           = $this->input->post('sustancias_notas');
+            $data['hipertension']               = $this->input->post('hipertension');
+            $data['hipertension_notas']         = $this->input->post('hipertension_notas');
+            $data['diabetes']                   = $this->input->post('diabetes');
+            $data['diabetes_notas']             = $this->input->post('diabetes_notas');   
+            $data['herpes']                     = $this->input->post('herpes');
+            $data['herpes_notas']               = $this->input->post('herpes_notas');
+            $data['asma']                       = $this->input->post('asma');
+            $data['asma_notas']                 = $this->input->post('asma_notas');
+            $data['autoinmunes']                = $this->input->post('autoinmunes');
+            $data['autoinmunes_notas']          = $this->input->post('autoinmunes_notas');
+            $data['vacunas']                    = $this->input->post('vacunas');
+            $data['vacunas_notas']              = $this->input->post('vacunas_notas');
+            $data['cicatrizacion']              = $this->input->post('cicatrizacion');
+            $data['cicatrizacion_notas']        = $this->input->post('cicatrizacion_notas');
+            $data['enfermedades_piel']          = $this->input->post('enfermedades_piel');
+            $data['enfermedades_piel_notas']    = $this->input->post('enfermedades_piel_notas');
+            $data['ejercicio']                  = $this->input->post('ejercicio');
+            $data['ejercicio_notas']            = $this->input->post('ejercicio_notas');
+            $data['anticonceptivo']             = $this->input->post('anticonceptivo');
+            $data['anticonceptivo_notas']       = $this->input->post('anticonceptivo_notas');
+            $data['notas']                      = $this->input->post('notas');
+            $data['assigned_staff']             = $this->input->post('assigned_staff');
+
+            if ($_FILES['userfile']['name'] != '') {
+                $data['file'] = $_FILES['userfile']['name'];
+            }
+    
+            $this->db->where('project_historia_clinica_id', $project_historia_clinica_id);
+            $this->db->update('project_historia_clinica', $data);
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
+    
+        }
+    
+        function delete_project_historia_clinica($project_historia_clinica_id = '')
+        {
+            $this->db->where('project_historia_clinica_id', $project_historia_clinica_id);
+            $this->db->delete('project_historia_clinica');
+        }
+    ///
+
+    //Nota de evolucion
+    function create_project_nota_evolucion($project_code = ''){
+        $data['project_code']           = $project_code;
+        $data['title']                  = $this->input->post('title');
+        $data['nombre_completo']        = $this->input->post('nombre_completo');
+        $data['comentarios_paciente']   = $this->input->post('comentarios_paciente');
+        $data['observaciones']          = $this->input->post('observaciones');
+        $data['assigned_staff']         = $this->input->post('assigned_staff');
+        $data['siguiente_cita']          = $this->input->post('siguiente_cita');
+        $data['timestamp']              = strtotime(date("d M,Y"));
+
+        $this->db->insert('project_nota_evolucion', $data);
+    }
+
+    function update_project_nota_evolucion($project_nota_evolucion_id = '')
+    {
+        $data['title']                  = $this->input->post('title');
+        $data['nombre_completo']        = $this->input->post('nombre_completo');
+        $data['comentarios_paciente']   = $this->input->post('comentarios_paciente');
+        $data['observaciones']          = $this->input->post('observaciones');
+        $data['assigned_staff']         = $this->input->post('assigned_staff');
+        $data['siguiente_cita']          = $this->input->post('siguiente_cita');
         if ($_FILES['userfile']['name'] != '') {
             $data['file'] = $_FILES['userfile']['name'];
         }
-        $this->db->insert('project_historia_clinica', $data);
+
+        $this->db->where('project_nota_evolucion_id', $project_nota_evolucion_id);
+        $this->db->update('project_nota_evolucion', $data);
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
 
     }
 
-    function update_project_historia_clinica($project_historia_clinica_id = '')
+    function delete_project_nota_evolucion($project_nota_evolucion_id = '')
     {
-        $data['title']                  = $this->input->post('title');
-        // $data['nacimiento']             = $this->input->post('nacimiento');
-        // $data['nacionalidad']           = $this->input->post('nacionalidad');
-        // $data['sexo']                   = $this->input->post('sexo');
-        // $data['genero']                 = $this->input->post('genero');
-        // $data['regla']                  = $this->input->post('regla');
-        // $data['embarazo']               = $this->input->post('embarazo');
-        // $data['menopausia']             = $this->input->post('menopausia');
-        // $data['estatura']               = $this->input->post('estatura');
-        // $data['peso']                   = $this->input->post('peso');
-        // $data['estado_civil']           = $this->input->post('estado_civil');
-        // $data['grado_estudios']         = $this->input->post('grado_estudios');
-        // $data['ocupacion']              = $this->input->post('ocupacion');
-        // $data['email']                  = $this->input->post('email');
-        // $data['motivo_consulta']        = $this->input->post('motivo_consulta');
-        // $data['alergias']               = $this->input->post('alergias');
-        // $data['enfermedades_cronicas']  = $this->input->post('enfermedades_cronicas');
-        // $data['farmacos_actuales']      = $this->input->post('farmacos_actuales');
-        // $data['suplementos']            = $this->input->post('suplementos');
-        // $data['cirujias_previas']       = $this->input->post('cirujias_previas');
-        // $data['tratamientos_esteticos'] = $this->input->post('tratamientos_esteticos');
-        // $data['rutina_piel']            = $this->input->post('rutina_piel');
-        // $data['notas']                  = $this->input->post('notas');
-        $data['assigned_staff']         = $this->input->post('assigned_staff');
-        // if ($_FILES['userfile']['name'] != '') {
-        //     $data['file'] = $_FILES['userfile']['name'];
-        // }
-        $this->db->where('project_historia_clinica_id', $project_historia_clinica_id);
-        $this->db->update('project_historia_clinica', $data);
-        // move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
-
+        $this->db->where('project_nota_evolucion_id', $project_nota_evolucion_id);
+        $this->db->delete('project_nota_evolucion');
     }
-
-    function delete_project_historia_clinica($project_historia_clinica_id = '')
-    {
-        $file_name = $this->db->get_where('project_historia_clinica', array(
-            'project_historia_clinica_id' => $project_historia_clinica_id
-        ))->row()->file;
-        if (file_exists('uploads/bug_file/' . $file_name)) {
-            unlink('uploads/bug_file/' . $file_name);
-        }
-        $this->db->where('project_historia_clinica_id', $project_historia_clinica_id);
-        $this->db->delete('project_historia_clinica');
-    }
-    ///
 
     function create_project_bug($project_code = '')
     {
@@ -1061,11 +1193,11 @@ class Crud_model extends CI_Model
     function add_project_milestone($project_code = '')
     {
         $data['project_code'] = $project_code;
-        $data['title']        = $this->input->post('title_input');
-        $data['id_servicio']     = $this->input->post('title_service');
+        $data['title']        = $this->input->post('title');
         $data['amount']       = $this->input->post('amount');
         $data['timestamp']    = strtotime($this->input->post('timestamp'));
         $data['status']       = $this->input->post('status');
+        $data['servicio_id']  = $this->input->post('servicio_id');
         $data['note']         = $this->input->post('note');
         $data['client_id']    = $this->db->get_where('project', array(
             'project_code' => $project_code
@@ -1079,11 +1211,11 @@ class Crud_model extends CI_Model
 
     function edit_project_milestone($project_milestone_id = '')
     {
-        $data['title']     = $this->input->post('title_input');
-        $data['id_servicio']     = $this->input->post('title_service');
+        $data['title']     = $this->input->post('title');
         $data['amount']    = $this->input->post('amount');
         $data['timestamp'] = strtotime($this->input->post('timestamp'));
         $data['status']    = $this->input->post('status');
+        $data['servicio_id']             = $this->input->post('servicio_id');
         $data['note']      = $this->input->post('note');
         $this->db->where('project_milestone_id', $project_milestone_id);
         $this->db->update('project_milestone', $data);
@@ -2051,6 +2183,7 @@ function create_influencer()
         $this->db->delete('product');
     }
 
+    // Servicios
     function create_servicios()
     {
 
@@ -2093,6 +2226,9 @@ function create_influencer()
         $this->db->where('servicios_id', $servicios_id);
         $this->db->delete('servicios');
     }
+
+
+    
 
     function get_settings($type)
     {

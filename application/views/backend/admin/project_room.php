@@ -14,7 +14,7 @@
 </div>
 <div class="row">
 
-	<div class="col-md-2">
+	<div class="col-md-3">
 
 		<a style="text-align: left;" href="<?php echo site_url('admin/projectroom/dashboard/' . $project_code);?>" 
 			class="<?php if ($room_page == 'project_dashboard') 
