@@ -10,7 +10,7 @@
 
 ?>
 
- <div class="col-md-7">
+ <div class="col-md-6">
 
         <br><br>
 

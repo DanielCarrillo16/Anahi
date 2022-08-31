@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-primary" data-collapsed="0">
@@ -12,22 +13,11 @@
                 <?php echo form_open(site_url('admin/project_milestone/add/'.$param2), array(
                     'class' => 'form-horizontal form-groups-bordered project-milestone-add', 'enctype' => 'multipart/form-data')); ?>
 
-                <input type="hidden" value="" name="title_input" id="title_input">
                 <div class="form-group">
                     <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('title'); ?></label>
 
                     <div class="col-sm-7">
-                        <select name="title_service" id="title_service" class="form-control selectboxit">
-                            <option value="">-</option>
-                            <?php 
-                                $services_list = $this->db->get('servicios');
-                                foreach ($services_list->result() as $row)
-                                {
-                                    echo '<option value="'.$row->servicios_id.'">'.$row->nombre.'</option>';
-                                }
-                            ?>
-
-                        </select>
+                        <input type="text" class="form-control" name="title" value="" autofocus required>
                     </div>
                 </div>
 
@@ -35,7 +25,7 @@
                     <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('amount'); ?></label>
 
                     <div class="col-sm-7">
-                        <input type="number" class="form-control" name="amount" id="amount" value="" required>
+                        <input type="number" class="form-control" name="amount" value="" required>
                     </div>
                 </div>
 
@@ -88,22 +78,6 @@
 <script type="text/javascript">
     // ajax form plugin calls at each modal loading,
 $(document).ready(function() {
-
-    $(document).on('change', '#title_service', function(event) {
-        var id = document.getElementById('title_service').value;
-
-        var first_select = document.getElementById('title_service');
-        var selected = first_select.options[first_select.selectedIndex].text;
-
-        document.getElementById("title_input").value = selected;
-
-        $.ajax({
-            url: '<?php echo site_url('admin/project_milestone_services/');?>'+id,
-            success: function(response){
-                document.getElementById("amount").value = response;
-            }
-        });
-    });
 
    //config for project milestone adding
     var options = {
@@ -162,7 +136,7 @@ $(document).ready(function() {
 
 function validate_project_milestone_add(formData, jqForm, options) {
 
-    if (!jqForm[0].title_service.value)
+    if (!jqForm[0].title.value)
     {
         toastr.error("Please enter a title", "Error");
         return false;
@@ -179,7 +153,10 @@ function show_response_project_milestone_add(responseText, statusText, xhr, $for
 }
 
 
+
 /*-----------------custom functions for ajax post data handling--------------------*/
+
+
 
 // custom function for reloading table data
 function reload_data(url)

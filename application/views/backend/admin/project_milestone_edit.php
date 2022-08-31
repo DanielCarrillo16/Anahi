@@ -16,25 +16,11 @@
                 <?php echo form_open(site_url('admin/project_milestone/edit/' . $param2), array(
                     'class' => 'form-horizontal form-groups-bordered project-milestone-edit', 'enctype' => 'multipart/form-data')); ?>
 
-                <input hidden value="<?php echo $row['title'];?>" name="title_input" id="title_input">
                 <div class="form-group">
                     <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('title'); ?></label>
 
                     <div class="col-sm-7">
-                    <select name="title_service" id="title_service" class="form-control selectboxit">
-                        <option value="<?= $row['id_servicio'] ?>"><?= $row['title'] ?></option>
-                        <?php 
-                            $services_list = $this->db->get('servicios');
-                            
-                            foreach ($services_list->result() as $servicios){
-                                if($servicios->servicios_id == $row['id_servicio']){
-                                    //Nada jjajajaj
-                                }else{
-                                    echo '<option value="'.$servicios->servicios_id.'">'.$servicios->nombre.'</option>';
-                                }
-                            }
-                        ?>
-                </select>
+                        <input type="text" class="form-control" name="title" value="<?php echo $row['title'];?>" required>
                     </div>
                 </div>
 
@@ -42,7 +28,7 @@
                     <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('amount'); ?></label>
 
                     <div class="col-sm-7">
-                        <input type="number" class="form-control" name="amount" id="amount" value="<?php echo $row['amount'];?>" required>
+                        <input type="number" class="form-control" name="amount" value="<?php echo $row['amount'];?>" required>
                     </div>
                 </div>
 
@@ -104,22 +90,6 @@
     // ajax form plugin calls at each modal loading,
 $(document).ready(function() {
 
-    $(document).on('change', '#title_service', function(event) {
-        var id = document.getElementById('title_service').value;
-
-        var first_select = document.getElementById('title_service');
-        var selected = first_select.options[first_select.selectedIndex].text;
-
-        document.getElementById("title_input").value = selected;
-
-        $.ajax({
-            url: '<?php echo site_url('admin/project_milestone_services/');?>'+id,
-            success: function(response){
-                document.getElementById("amount").value = response;
-            }
-        });
-    });
-
    //config for project milestone adding
     var options = {
         beforeSubmit: validate_project_milestone_edit,
@@ -177,7 +147,7 @@ $(document).ready(function() {
 
 function validate_project_milestone_edit(formData, jqForm, options) {
 
-    if (!jqForm[0].title_service.value)
+    if (!jqForm[0].title.value)
     {
         toastr.error("Please enter a title", "Error");
         return false;

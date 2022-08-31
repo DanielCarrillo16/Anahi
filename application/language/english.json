@@ -941,5 +941,8 @@
     "ninguno": "Ninguno",
     "selecciona": "Selecciona",
     "seleccionar": "Seleccionar",
-    "anahí": "Anahí"
+    "anahí": "Anahí",
+    "servicios": "Servicios",
+    "agregar_servicio": "Agregar servicio",
+    "application_details": "Application details"
 }

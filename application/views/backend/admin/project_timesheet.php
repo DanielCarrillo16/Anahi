@@ -5,7 +5,7 @@
 	foreach ($current_project as $row):
 ?>
 
-<div class="col-md-7">
+<div class="col-md-6">
 	
 	<div class="panel panel-primary" data-collapsed="0">
 

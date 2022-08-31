@@ -1,6 +1,6 @@
 <?php 
 
-    $edit = $this->db->get_where('project_historia_clinica' , array('project_historia_clinica_id' => $param2))->result_array();
+    $edit = $this->db->get_where('project_nota_evolucion' , array('project_nota_evolucion_id' => $param2))->result_array();
 
     foreach ($edit as $row):
 
@@ -18,7 +18,7 @@
 
                     <i class="entypo-plus-circled"></i>
 
-                    <?php echo get_phrase('edit_project_historia_clinica'); ?>
+                    <?php echo get_phrase('edit_project_nota_evolucion'); ?>
 
                 </div>
 
@@ -28,9 +28,9 @@
 
 
 
-                <?php echo form_open(site_url('admin/project_historia_clinica/edit/' . $param2), array(
+                <?php echo form_open(site_url('admin/project_nota_evolucion/edit/' . $param2), array(
 
-                    'class' => 'form-horizontal form-groups-bordered validate project-historia_clinica-edit', 'enctype' => 'multipart/form-data')); ?>
+                    'class' => 'form-horizontal form-groups-bordered validate project-nota_evolucion-edit', 'enctype' => 'multipart/form-data')); ?>
 
 
 
@@ -48,6 +48,20 @@
                     </div>
                 </div>
 
+
+                <div class="form-group">
+                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('comentarios_paciente'); ?></label>
+                    <div class="col-sm-7">
+                        <textarea class="form-control" name="comentarios_paciente"><?php echo $row['comentarios_paciente']; ?></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('observaciones'); ?></label>
+                    <div class="col-sm-7">
+                        <textarea class="form-control" name="observaciones"><?php echo $row['observaciones']; ?></textarea>
+                    </div>
+                </div>
 
                 <div class="form-group">
 
@@ -98,6 +112,13 @@
 </div>
 
                 <div class="form-group">
+                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('siguiente_cita'); ?></label>
+                    <div class="col-sm-7">
+                        <input type="date" class="form-control" name="siguiente_cita" value="<?php echo $row['siguiente?cita']; ?>" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-7">
                         <button type="submit" class="btn btn-info" id="submit-button"><?php echo get_phrase('update'); ?></button>
                         <span id="preloader-form"></span>
@@ -128,7 +149,7 @@
 
     // url for refresh data after ajax form submission
 
-    var post_refresh_url = '<?php echo site_url('admin/reload_projectroom_historia_clinica/' . $project_code); ?>';
+    var post_refresh_url = '<?php echo site_url('admin/reload_projectroom_nota_evolucion/' . $project_code); ?>';
 
 </script>
 
@@ -148,19 +169,19 @@ $(document).ready(function() {
 
 
 
-   //config for project historia_clinica adding
+   //config for project nota_evolucion adding
 
     var options = {
 
-        beforeSubmit: validate_project_historia_clinica_edit,
+        beforeSubmit: validate_project_nota_evolucion_edit,
 
-        success: show_response_project_historia_clinica_edit,
+        success: show_response_project_nota_evolucion_edit,
 
         resetForm: true
 
     };
 
-    $('.project-historia_clinica-edit').submit(function () {
+    $('.project-nota_evolucion-edit').submit(function () {
 
         $(this).ajaxSubmit(options);
 
@@ -206,7 +227,7 @@ $(document).ready(function() {
 
 
 
-function validate_project_historia_clinica_edit(formData, jqForm, options) {
+function validate_project_nota_evolucion_edit(formData, jqForm, options) {
 
 
 
@@ -226,13 +247,13 @@ function validate_project_historia_clinica_edit(formData, jqForm, options) {
 
 // ajax success response after form submission
 
-function show_response_project_historia_clinica_edit(responseText, statusText, xhr, $form)  {
+function show_response_project_nota_evolucion_edit(responseText, statusText, xhr, $form)  {
 
 
 
     
 
-    toastr.success("historia_clinica edited successfully", "Success");
+    toastr.success("nota_evolucion edited successfully", "Success");
 
     $('#modal_ajax').modal('hide');
 

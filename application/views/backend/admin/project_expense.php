@@ -4,7 +4,7 @@
 	))->result_array();
 	foreach ($current_project as $row):
 ?>
- <div class="col-md-7">
+ <div class="col-md-6">
         <br><br>
         <a href="#" class="btn btn-info pull-right tooltip-primary"
            onclick="showAjaxModal('<?php echo site_url('modal/popup/project_expense_add/' . $project_code); ?>');">

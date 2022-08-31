@@ -2,9 +2,9 @@
 
 
 
-$historia_clinica = $this->db->get_where('project_historia_clinica', array('project_historia_clinica_id' => $param2))->result_array();
+$nota_evolucion = $this->db->get_where('project_nota_evolucion', array('project_nota_evolucion_id' => $param2))->result_array();
 
-foreach ($historia_clinica as $row):
+foreach ($nota_evolucion as $row):
 
     ?>
 
@@ -28,6 +28,18 @@ foreach ($historia_clinica as $row):
 
                     
 
+                </p>
+
+                <p>
+                    <small><?php echo $row['comentarios_paciente']; ?></small>
+                </p>
+
+                <p>
+                    <small><?php echo $row['observaciones']; ?></small>
+                </p>
+
+                <p>
+                    <small><?php echo $row['siguiente_cita']; ?></small>
                 </p>
 
                 &nbsp;
