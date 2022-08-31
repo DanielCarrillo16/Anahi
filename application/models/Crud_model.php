@@ -457,6 +457,16 @@ class Crud_model extends CI_Model
         $this->db->update('project', $data);
     }
 
+    function get_amount_service($id)
+    {
+        $this->db->select('*');
+        $this->db->from('servicios');
+        $this->db->where('servicios_id', $id);
+        $amount = $this->db->get();
+
+        return $amount;
+    }
+
     function delete_project($project_code)
     {
         $project_milestone_id = $this->db->get_where('project_milestone', array(
@@ -1193,11 +1203,11 @@ class Crud_model extends CI_Model
     function add_project_milestone($project_code = '')
     {
         $data['project_code'] = $project_code;
-        $data['title']        = $this->input->post('title');
+        $data['title']        = $this->input->post('title_input');
+        $data['id_servicio']     = $this->input->post('title_service');
         $data['amount']       = $this->input->post('amount');
         $data['timestamp']    = strtotime($this->input->post('timestamp'));
         $data['status']       = $this->input->post('status');
-        $data['servicio_id']  = $this->input->post('servicio_id');
         $data['note']         = $this->input->post('note');
         $data['client_id']    = $this->db->get_where('project', array(
             'project_code' => $project_code
@@ -1211,11 +1221,11 @@ class Crud_model extends CI_Model
 
     function edit_project_milestone($project_milestone_id = '')
     {
-        $data['title']     = $this->input->post('title');
+        $data['title']     = $this->input->post('title_input');
+        $data['id_servicio']     = $this->input->post('title_service');
         $data['amount']    = $this->input->post('amount');
         $data['timestamp'] = strtotime($this->input->post('timestamp'));
         $data['status']    = $this->input->post('status');
-        $data['servicio_id']             = $this->input->post('servicio_id');
         $data['note']      = $this->input->post('note');
         $this->db->where('project_milestone_id', $project_milestone_id);
         $this->db->update('project_milestone', $data);
