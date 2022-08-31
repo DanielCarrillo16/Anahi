@@ -462,6 +462,16 @@ class Crud_model extends CI_Model
         $this->db->delete('project');
     }
 
+    function get_amount_service($id)
+    {
+        $this->db->select('*');
+        $this->db->from('servicios');
+        $this->db->where('servicios_id', $id);
+        $amount = $this->db->get();
+
+        return $amount;
+    }
+
     function create_project_task($project_code = '')
     {
         $data['title']           = $this->input->post('name');
@@ -1051,7 +1061,8 @@ class Crud_model extends CI_Model
     function add_project_milestone($project_code = '')
     {
         $data['project_code'] = $project_code;
-        $data['title']        = $this->input->post('title');
+        $data['title']        = $this->input->post('title_input');
+        $data['id_servicio']     = $this->input->post('title_service');
         $data['amount']       = $this->input->post('amount');
         $data['timestamp']    = strtotime($this->input->post('timestamp'));
         $data['status']       = $this->input->post('status');
@@ -1068,7 +1079,8 @@ class Crud_model extends CI_Model
 
     function edit_project_milestone($project_milestone_id = '')
     {
-        $data['title']     = $this->input->post('title');
+        $data['title']     = $this->input->post('title_input');
+        $data['id_servicio']     = $this->input->post('title_service');
         $data['amount']    = $this->input->post('amount');
         $data['timestamp'] = strtotime($this->input->post('timestamp'));
         $data['status']    = $this->input->post('status');

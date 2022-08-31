@@ -929,5 +929,11 @@
     "servicios": "Servicios",
     "agregar_servicio": "Agregar servicio",
     "product": "Product",
-    "anahí": "Anahí"
+    "anahí": "Anahí",
+    "add_admin": "Add admin",
+    "edit_product": "Edit product",
+    "existencia": "Existencia",
+    "precio": "Precio",
+    "caducidad": "Caducidad",
+    "add_product": "Add product"
 }
