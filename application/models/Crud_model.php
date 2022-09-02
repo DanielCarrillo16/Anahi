@@ -893,173 +893,82 @@ class Crud_model extends CI_Model
    
 
     /// historia clinica
-/*         $data['project_code']           = $project_code;
-        $data['nombre_completo']        = $this->input->post('nombre_completo');
-        $data['title']                  = $this->input->post('title');
-        $data['nacimiento']             = $this->input->post('nacimiento');
-        $data['nacionalidad']           = $this->input->post('nacionalidad');
-        $data['sexo']                   = $this->input->post('sexo');
-        $data['genero']                 = $this->input->post('genero');
-        $data['regla']                  = $this->input->post('regla');
-        $data['embarazo']               = $this->input->post('embarazo');
-        $data['menopausia']             = $this->input->post('menopausia');
-        $data['estatura']               = $this->input->post('estatura');
-        $data['peso']                   = $this->input->post('peso');
-        $data['estado_civil']           = $this->input->post('estado_civil');
-        $data['grado_estudios']         = $this->input->post('grado_estudios');
-        $data['ocupacion']              = $this->input->post('ocupacion');
-        $data['email']                  = $this->input->post('email');
-        $data['motivo_consulta']        = $this->input->post('motivo_consulta');
-        $data['alergias']               = $this->input->post('alergias');
-        $data['enfermedades_cronicas']  = $this->input->post('enfermedades_cronicas');
-        $data['farmacos_actuales']      = $this->input->post('farmacos_actuales');
-        $data['suplementos']            = $this->input->post('suplementos');
-        $data['cirujias_previas']       = $this->input->post('cirujias_previas');
-        $data['tratamientos_esteticos'] = $this->input->post('tratamientos_esteticos');
-        $data['rutina_piel']            = $this->input->post('rutina_piel');
-        $data['notas']                  = $this->input->post('notas');
-        $data['assigned_staff']         = $this->input->post('assigned_staff');
-        $data['user_type']              = $this->session->userdata('login_type');
-        $data['user_id']                = $this->session->userdata('login_user_id');
-        $data['timestamp']              = strtotime(date("d M,Y")); */
-        
 
 
         function create_project_historia_clinica($project_code = ''){
-            $data['project_code']               = $project_code;
-            $data['title']                      = $this->input->post('title');
-            $data['nombre_completo']            = $this->input->post('nombre_completo');
-            $data['nacimiento']                 = $this->input->post('nacimiento');
-            $data['nacionalidad']               = $this->input->post('nacionalidad');
-            $data['sexo']                       = $this->input->post('sexo');
-            $data['genero']                     = $this->input->post('genero');
-            $data['regla']                      = $this->input->post('regla');
-            $data['embarazo']                   = $this->input->post('embarazo');
-            $data['menopausia']                 = $this->input->post('menopausia');
-            $data['estatura']                   = $this->input->post('estatura');
-            $data['peso']                       = $this->input->post('peso');
-            $data['estado_civil']               = $this->input->post('estado_civil');
-            $data['grado_estudios']             = $this->input->post('grado_estudios');
-            $data['ocupacion']                  = $this->input->post('ocupacion');
-            $data['email']                      = $this->input->post('email');
-            $data['motivo_consulta']            = $this->input->post('motivo_consulta');
-            $data['alergias']                   = $this->input->post('alergias');
-            $data['enfermedades_cronicas']      = $this->input->post('enfermedades_cronicas');
-            $data['farmacos_actuales']          = $this->input->post('farmacos_actuales');
-            $data['suplementos']                = $this->input->post('suplementos');
-            $data['cirujias_previas']           = $this->input->post('cirujias_previas');
-            $data['tratamientos_esteticos']     = $this->input->post('tratamientos_esteticos');
-            $data['rutina_piel']                = $this->input->post('rutina_piel');
-            $data['madre_diabetes']             = $this->input->post('madre_diabetes');
-            $data['madre_hipertension']         = $this->input->post('madre_hipertension');
-            $data['madre_lupus']                = $this->input->post('madre_lupus');
-            $data['madre_notas']                = $this->input->post('madre_notas');
-            $data['padre_diabetes']             = $this->input->post('padre_diabetes');
-            $data['padre_hipertension']         = $this->input->post('padre_hipertension');
-            $data['padre_lupus']                = $this->input->post('padre_lupus');
-            $data['padre_notas']                = $this->input->post('padre_notas');
-            $data['hermanos_diabetes']          = $this->input->post('hermanos_diabetes');
-            $data['hermanos_hipertension']      = $this->input->post('hermanos_hipertension');
-            $data['hermanos_lupus']             = $this->input->post('hermanos_lupus');
-            $data['hermanos_notas']             = $this->input->post('hermanos_notas');
-            $data['alcohol']                    = $this->input->post('alcohol');
-            $data['alcohol_notas']              = $this->input->post('alcohol_notas');
-            $data['tabaco']                     = $this->input->post('tabaco');
-            $data['tabaco_notas']               = $this->input->post('tabaco_notas');
-            $data['sustancias']                 = $this->input->post('sustancias');  
-            $data['sustancias_notas']           = $this->input->post('sustancias_notas');
-            $data['hipertension']               = $this->input->post('hipertension');
-            $data['hipertension_notas']         = $this->input->post('hipertension_notas');
-            $data['diabetes']                   = $this->input->post('diabetes');
-            $data['diabetes_notas']             = $this->input->post('diabetes_notas');   
-            $data['herpes']                     = $this->input->post('herpes');
-            $data['herpes_notas']               = $this->input->post('herpes_notas');
-            $data['asma']                       = $this->input->post('asma');
-            $data['asma_notas']                 = $this->input->post('asma_notas');
-            $data['autoinmunes']                = $this->input->post('autoinmunes');
-            $data['autoinmunes_notas']          = $this->input->post('autoinmunes_notas');
-            $data['vacunas']                    = $this->input->post('vacunas');
-            $data['vacunas_notas']              = $this->input->post('vacunas_notas');
-            $data['cicatrizacion']              = $this->input->post('cicatrizacion');
-            $data['cicatrizacion_notas']        = $this->input->post('cicatrizacion_notas');
-            $data['enfermedades_piel']          = $this->input->post('enfermedades_piel');
-            $data['enfermedades_piel_notas']    = $this->input->post('enfermedades_piel_notas');
-            $data['ejercicio']                  = $this->input->post('ejercicio');
-            $data['ejercicio_notas']            = $this->input->post('ejercicio_notas');
-            $data['anticonceptivo']             = $this->input->post('anticonceptivo');
-            $data['anticonceptivo_notas']       = $this->input->post('anticonceptivo_notas');   
-            $data['notas']                      = $this->input->post('notas');
-            $data['assigned_staff']             = $this->input->post('assigned_staff');
-            $data['timestamp']                  = strtotime(date("d M,Y"));
+            $data['project_code']                 = $project_code;
+            $data2['project_code']                = $project_code;
+            $data['title']                        = $this->input->post('title');
+            $data['nombre_completo']              = $this->input->post('nombre_completo');
+            $data['nacimiento']                   = $this->input->post('nacimiento');
+            $data['sexo']                         = $this->input->post('sexo');
+            $data['talla']                        = $this->input->post('talla');
+            $data['peso']                         = $this->input->post('peso');
+            $data['glucosa']                      = $this->input->post('glucosa');
+            $data['motivo_consulta']              = $this->input->post('motivo_consulta');
+            $data['alergias']                     = $this->input->post('alergias');
+            $data['farmacos_actuales']            = $this->input->post('farmacos_actuales');
+            $data['alcohol']                      = $this->input->post('alcohol');
+            $data['alcohol_notas']                = $this->input->post('alcohol_notas');
+            $data['tabaco']                       = $this->input->post('tabaco');
+            $data['tabaco_notas']                 = $this->input->post('tabaco_notas');
+            $data['sustancias']                   = $this->input->post('sustancias');  
+            $data['sustancias_notas']             = $this->input->post('sustancias_notas');
+            $data['glogau']                       = $this->input->post('glogau'); 
+            $data['fitz']                         = $this->input->post('fitz'); 
+            $data['notas']                        = $this->input->post('notas');
+            $data['assigned_staff']               = $this->input->post('assigned_staff');
+            $data['timestamp']                    = strtotime(date("d M,Y"));
+            $data2['zona_frontal_cantidad']       = $this->input->post('zona_frontal_cantidad'); 
+            $data2['zona_corrugador_cantidad']    = $this->input->post('zona_corrugador_cantidad');
+            $data2['zona_proceus_cantidad']       = $this->input->post('zona_proceus_cantidad');
+            $data2['zona_ojo_cantidad']           = $this->input->post('zona_ojo_cantidad');
+            $data2['zona_subpalpebral_cantidad']  = $this->input->post('zona_subpalpebral_cantidad');
+            $data2['zona_nariz_cantidad']         = $this->input->post('zona_nariz_cantidad'); 
+            $data2['zona_boca_cantidad']          = $this->input->post('zona_boca_cantidad');
+            $data2['zona_masetero_cantidad']      = $this->input->post('zona_masetero_cantidad');
+            $data2['zona_mentoniano_cantidad']    = $this->input->post('zona_mentoniano_cantidad');
+            $data2['zona_otros_cantidad']         = $this->input->post('zona_otros_cantidad');
+            $data2['timestamp']                   = strtotime(date("d M,Y")); 
                 
             $this->db->insert('project_historia_clinica', $data);
+            $this->db->insert('project_toxina_botulinica', $data2);
         }
     
-        function update_project_historia_clinica($project_historia_clinica_id = '')
+        function update_project_historia_clinica($project_historia_clinica_id = '', $project_toxina_botulinica_id = '')
         {
-            $data['title']                      = $this->input->post('title');
-            $data['nombre_completo']            = $this->input->post('nombre_completo');
-            $data['nacimiento']                 = $this->input->post('nacimiento');
-            $data['nacionalidad']               = $this->input->post('nacionalidad');
-            $data['sexo']                       = $this->input->post('sexo');
-            $data['genero']                     = $this->input->post('genero');
-            $data['regla']                      = $this->input->post('regla');
-            $data['embarazo']                   = $this->input->post('embarazo');
-            $data['menopausia']                 = $this->input->post('menopausia');
-            $data['estatura']                   = $this->input->post('estatura');
-            $data['peso']                       = $this->input->post('peso');
-            $data['estado_civil']               = $this->input->post('estado_civil');
-            $data['grado_estudios']             = $this->input->post('grado_estudios');
-            $data['ocupacion']                  = $this->input->post('ocupacion');
-            $data['email']                      = $this->input->post('email');
-            $data['motivo_consulta']            = $this->input->post('motivo_consulta');
-            $data['alergias']                   = $this->input->post('alergias');
-            $data['enfermedades_cronicas']      = $this->input->post('enfermedades_cronicas');
-            $data['farmacos_actuales']          = $this->input->post('farmacos_actuales');
-            $data['suplementos']                = $this->input->post('suplementos');
-            $data['cirujias_previas']           = $this->input->post('cirujias_previas');
-            $data['tratamientos_esteticos']     = $this->input->post('tratamientos_esteticos');
-            $data['rutina_piel']                = $this->input->post('rutina_piel');
-            $data['madre_diabetes']             = $this->input->post('madre_diabetes');
-            $data['madre_hipertension']         = $this->input->post('madre_hipertension');
-            $data['madre_lupus']                = $this->input->post('madre_lupus');
-            $data['madre_notas']                = $this->input->post('madre_notas');
-            $data['padre_diabetes']             = $this->input->post('padre_diabetes');
-            $data['padre_hipertension']         = $this->input->post('padre_hipertension');
-            $data['padre_lupus']                = $this->input->post('padre_lupus');
-            $data['padre_notas']                = $this->input->post('padre_notas');
-            $data['hermanos_diabetes']          = $this->input->post('hermanos_diabetes');
-            $data['hermanos_hipertension']      = $this->input->post('hermanos_hipertension');
-            $data['hermanos_lupus']             = $this->input->post('hermanos_lupus');
-            $data['hermanos_notas']             = $this->input->post('hermanos_notas');
-            $data['alcohol']                    = $this->input->post('alcohol');
-            $data['alcohol_notas']              = $this->input->post('alcohol_notas');
-            $data['tabaco']                     = $this->input->post('tabaco');
-            $data['tabaco_notas']               = $this->input->post('tabaco_notas');
-            $data['sustancias']                 = $this->input->post('sustancias');  
-            $data['sustancias_notas']           = $this->input->post('sustancias_notas');
-            $data['hipertension']               = $this->input->post('hipertension');
-            $data['hipertension_notas']         = $this->input->post('hipertension_notas');
-            $data['diabetes']                   = $this->input->post('diabetes');
-            $data['diabetes_notas']             = $this->input->post('diabetes_notas');   
-            $data['herpes']                     = $this->input->post('herpes');
-            $data['herpes_notas']               = $this->input->post('herpes_notas');
-            $data['asma']                       = $this->input->post('asma');
-            $data['asma_notas']                 = $this->input->post('asma_notas');
-            $data['autoinmunes']                = $this->input->post('autoinmunes');
-            $data['autoinmunes_notas']          = $this->input->post('autoinmunes_notas');
-            $data['vacunas']                    = $this->input->post('vacunas');
-            $data['vacunas_notas']              = $this->input->post('vacunas_notas');
-            $data['cicatrizacion']              = $this->input->post('cicatrizacion');
-            $data['cicatrizacion_notas']        = $this->input->post('cicatrizacion_notas');
-            $data['enfermedades_piel']          = $this->input->post('enfermedades_piel');
-            $data['enfermedades_piel_notas']    = $this->input->post('enfermedades_piel_notas');
-            $data['ejercicio']                  = $this->input->post('ejercicio');
-            $data['ejercicio_notas']            = $this->input->post('ejercicio_notas');
-            $data['anticonceptivo']             = $this->input->post('anticonceptivo');
-            $data['anticonceptivo_notas']       = $this->input->post('anticonceptivo_notas');
-            $data['notas']                      = $this->input->post('notas');
-            $data['assigned_staff']             = $this->input->post('assigned_staff');
+            $data['project_code']                 = $project_code;
+            $data2['project_code']                = $project_code;
+            $data['title']                        = $this->input->post('title');
+            $data['nombre_completo']              = $this->input->post('nombre_completo');
+            $data['nacimiento']                   = $this->input->post('nacimiento');
+            $data['sexo']                         = $this->input->post('sexo');
+            $data['talla']                        = $this->input->post('talla');
+            $data['peso']                         = $this->input->post('peso');
+            $data['glucosa']                      = $this->input->post('glucosa');
+            $data['motivo_consulta']              = $this->input->post('motivo_consulta');
+            $data['alergias']                     = $this->input->post('alergias');
+            $data['farmacos_actuales']            = $this->input->post('farmacos_actuales');
+            $data['alcohol']                      = $this->input->post('alcohol');
+            $data['alcohol_notas']                = $this->input->post('alcohol_notas');
+            $data['tabaco']                       = $this->input->post('tabaco');
+            $data['tabaco_notas']                 = $this->input->post('tabaco_notas');
+            $data['sustancias']                   = $this->input->post('sustancias');  
+            $data['sustancias_notas']             = $this->input->post('sustancias_notas');
+            $data['glogau']                       = $this->input->post('glogau'); 
+            $data['fitz']                         = $this->input->post('fitz'); 
+            $data['notas']                        = $this->input->post('notas');
+            $data['assigned_staff']               = $this->input->post('assigned_staff');
+            $data2['zona_frontal_cantidad']       = $this->input->post('zona_frontal_cantidad'); 
+            $data2['zona_corrugador_cantidad']    = $this->input->post('zona_corrugador_cantidad');
+            $data2['zona_proceus_cantidad']       = $this->input->post('zona_proceus_cantidad');
+            $data2['zona_ojo_cantidad']           = $this->input->post('zona_ojo_cantidad');
+            $data2['zona_subpalpebral_cantidad']  = $this->input->post('zona_subpalpebral_cantidad');
+            $data2['zona_nariz_cantidad']         = $this->input->post('zona_nariz_cantidad'); 
+            $data2['zona_boca_cantidad']          = $this->input->post('zona_boca_cantidad');
+            $data2['zona_masetero_cantidad']      = $this->input->post('zona_masetero_cantidad');
+            $data2['zona_mentoniano_cantidad']    = $this->input->post('zona_mentoniano_cantidad');
+            $data2['zona_otros_cantidad']         = $this->input->post('zona_otros_cantidad');
 
             if ($_FILES['userfile']['name'] != '') {
                 $data['file'] = $_FILES['userfile']['name'];
@@ -1067,14 +976,18 @@ class Crud_model extends CI_Model
     
             $this->db->where('project_historia_clinica_id', $project_historia_clinica_id);
             $this->db->update('project_historia_clinica', $data);
+            $this->db->where('project_toxina_botulinica_id', $project_toxina_botulinica_id);
+            $this->db->update('project_toxina_botulinica', $data2);
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
     
         }
     
-        function delete_project_historia_clinica($project_historia_clinica_id = '')
+        function delete_project_historia_clinica($project_historia_clinica_id = '', $project_toxina_botulinica_id='')
         {
             $this->db->where('project_historia_clinica_id', $project_historia_clinica_id);
             $this->db->delete('project_historia_clinica');
+            $this->db->where('project_toxina_botulinica_id', $project_toxina_botulinica_id);
+            $this->db->delete('project_toxina_botulinica');
         }
     ///
 
