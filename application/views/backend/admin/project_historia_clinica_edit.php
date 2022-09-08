@@ -26,13 +26,21 @@
 
             <div class="panel-body">
 
+                <?php 
+
+                    $edit_botulinica = $this->db->get_where('project_toxina_botulinica' , array('id_historial_clinico' => $param2))->result_array();
+
+                    foreach ($edit_botulinica as $row2):
+
+                ?>
+
 
 
                 <?php echo form_open(site_url('admin/project_historia_clinica/edit/' . $param2), array(
 
                     'class' => 'form-horizontal form-groups-bordered validate project-historia_clinica-edit', 'enctype' => 'multipart/form-data')); ?>
 
-
+                
 
                 <div class="form-group">
                     <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('title'); ?></label>
@@ -187,62 +195,62 @@
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona frontal')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_frontal_cantidad" value="<?php echo $row['zona_frontal_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_frontal_cantidad" value="<?php echo $row2['zona_frontal_cantidad']; ?>" autofocus>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona corrugador')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_corrugador_cantidad" value="<?php echo $row['zona_corrugador_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_corrugador_cantidad" value="<?php echo $row2['zona_corrugador_cantidad']; ?>" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona proceus')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_proceus_cantidad" value="<?php echo $row['zona_proceus_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_proceus_cantidad" value="<?php echo $row2['zona_proceus_cantidad']; ?>" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona ojo')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_ojo_cantidad" value="<?php echo $row['zona_ojo_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_ojo_cantidad" value="<?php echo $row2['zona_ojo_cantidad']; ?>" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona subpalpebral')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_subpalpebral_cantidad" value="<?php echo $row['zona_subpalpebral_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_subpalpebral_cantidad" value="<?php echo $row2['zona_subpalpebral_cantidad']; ?>" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona nariz')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_nariz_cantidad" value="<?php echo $row['zona_nariz_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_nariz_cantidad" value="<?php echo $row2['zona_nariz_cantidad']; ?>" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona boca')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_boca_cantidad" value="<?php echo $row['zona_boca_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_boca_cantidad" value="<?php echo $row2['zona_boca_cantidad']; ?>" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona masetero')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_masetero_cantidad" value="<?php echo $row['zona_masetero_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_masetero_cantidad" value="<?php echo $row2['zona_masetero_cantidad']; ?>" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona mentoniano')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_mentoniano_cantidad" value="<?php echo $row['zona_mentoniano_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_mentoniano_cantidad" value="<?php echo $row2['zona_mentoniano_cantidad']; ?>" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona otros')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_otros_cantidad" value="<?php echo $row['zona_otros_cantidad']; ?>" autofocus>
+                <input type="text" class="form-control" name="zona_otros_cantidad" value="<?php echo $row2['zona_otros_cantidad']; ?>" autofocus>
                 </div>
             </div>
 
@@ -303,102 +311,9 @@
 
 </div>
 
-            <?php 
-
-                $edit = $this->db->get_where('project_toxina_botulinica' , array('project_toxina_botulinica_id' => $param2))->result_array();
-
-                foreach ($edit as $row):
-
-            ?>
-
-                <div class="form-group" multiple>
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('toxina_botulinica'); ?></label>
-                <div class="col-sm-5">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_frontal" name="zona_frontal">
-                      <label class="form-check-label" for="zona_frontal">
-                        U frontal
-                      </label>
-                      <input type="number" class="form-control" name="zona_frontal_cantidad" autofocus>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_corrugador" name="zona_corrugador">
-                      <label class="form-check-label" for="zona_corrugador">
-                        U corrugador
-                      </label>
-                      <input type="number" class="form-control" name="zona_corrugador_cantidad" autofocus>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_proceus" name="zona_proceus">
-                      <label class="form-check-label" for="zona_proceus">
-                        U proceus
-                      </label>
-                      <input type="number" class="form-control" name="zona_proceus_cantidad" autofocus>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_ojo" name="zona_ojo">
-                      <label class="form-check-label" for="zona_ojo">
-                        U ojo
-                      </label>
-                      <input type="number" class="form-control" name="zona_ojo_cantidad" autofocus>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_subpalpebral" name="zona_subpalpebral">
-                      <label class="form-check-label" for="zona_subpalpebral">
-                        U subpalpebral
-                      </label>
-                      <input type="number" class="form-control" name="zona_subpalpebral_cantidad" autofocus>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_nariz" name="zona_nariz">
-                      <label class="form-check-label" for="zona_nariz">
-                        U nariz
-                      </label>
-                      <input type="number" class="form-control" name="zona_nariz_cantidad" autofocus>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_boca" name="zona_boca">
-                      <label class="form-check-label" for="zona_boca">
-                        U boca
-                      </label>
-                      <input type="number" class="form-control" name="zona_boca_cantidad" autofocus>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_masetero" name="zona_masetero">
-                      <label class="form-check-label" for="zona_masetero">
-                        U masetero
-                      </label>
-                      <input type="number" class="form-control" name="zona_masetero_cantidad" autofocus>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_mentoniano" name="zona_mentoniano">
-                      <label class="form-check-label" for="zona_mentoniano">
-                        U mentoniano
-                      </label>
-                      <input type="number" class="form-control" name="zona_mentoniano_cantidad" autofocus>
-                    </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="u_otros" name="zona_otros">
-                      <label class="form-check-label" for="zona_otros">
-                        U otros
-                      </label>
-                      <input type="number" class="form-control" name="zona_otros_cantidad" autofocus>
-                    </div>
-                </div>
-            </div>
-
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-7">
-                        <button type="submit" class="btn btn-info" id="submit-button"><?php echo get_phrase('update'); ?></button>
+                        <button type="submit" class="btn btn-info" visible="true" id="submit-button"><?php echo get_phrase('update'); ?></button>
                         <span id="preloader-form"></span>
                     </div>
                 </div>

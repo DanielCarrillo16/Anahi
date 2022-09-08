@@ -59,7 +59,7 @@ foreach ($edit_data as $row):
 					
 					
 					
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="field-2" class="col-sm-4 control-label"><?php echo get_phrase('website');?></label>
                         
 						<div class="col-sm-7">
@@ -113,7 +113,7 @@ foreach ($edit_data as $row):
                          </div>
 						</div> 
 					</div>
-					
+					 -->
 					
 					<div class="form-group">
 						<label for="field-2" class="col-sm-4 control-label"><?php echo get_phrase('short_note');?></label>
