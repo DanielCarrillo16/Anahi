@@ -26,7 +26,7 @@
                 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Ekushey Project Manager CRM</h4>
+                    <h4 class="modal-title">Anahí</h4>
                 </div>
                 
                 <div class="modal-body" style="height:500px; overflow:auto;">

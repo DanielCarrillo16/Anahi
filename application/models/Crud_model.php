@@ -932,13 +932,23 @@ class Crud_model extends CI_Model
             $data2['timestamp']                   = strtotime(date("d M,Y")); 
                 
             $this->db->insert('project_historia_clinica', $data);
+
+            $id = $this->db->insert_id();
+            $data2['id_historial_clinico'] = $id;
+
             $this->db->insert('project_toxina_botulinica', $data2);
         }
     
-        function update_project_historia_clinica($project_historia_clinica_id = '', $project_toxina_botulinica_id = '')
+        function update_project_historia_clinica($project_historia_clinica_id = '')
         {
-            $data['project_code']                 = $project_code;
-            $data2['project_code']                = $project_code;
+            $id_botulinica_array = $this->db->get_where('project_toxina_botulinica' , array('id_historial_clinico' => $project_historia_clinica_id))->result_array();
+
+            foreach($id_botulinica_array as $row){
+                $id_botulinica = $row['project_toxina_botulinica_id'];
+            }
+
+            // $data['project_code']                 = $project_historia_clinica_id;
+            // $data2['project_code']                = $project_toxina_botulinica_id;
             $data['title']                        = $this->input->post('title');
             $data['nombre_completo']              = $this->input->post('nombre_completo');
             $data['nacimiento']                   = $this->input->post('nacimiento');
@@ -976,7 +986,7 @@ class Crud_model extends CI_Model
     
             $this->db->where('project_historia_clinica_id', $project_historia_clinica_id);
             $this->db->update('project_historia_clinica', $data);
-            $this->db->where('project_toxina_botulinica_id', $project_toxina_botulinica_id);
+            $this->db->where('project_toxina_botulinica_id', $id_botulinica);
             $this->db->update('project_toxina_botulinica', $data2);
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
     

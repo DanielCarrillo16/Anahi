@@ -44,7 +44,7 @@
 
         <div style="text-align: -webkit-center;" id="branding_element">
 
-            <img src="<?php echo base_url('assets/logo.png');?>"  style="max-height:35px;"/>
+            <img src="<?php echo base_url('assets/dark-logo.png');?>"  style="max-height:35px;"/>
 
             <h4 style="color: #a2a3b7;text-align: -webkit-center;margin-bottom: 25px;font-weight: 600;
 
@@ -130,7 +130,7 @@
 
                     </a>
 
-                    <li class="<?php if ($page_name == 'influencer') echo 'active';?>">
+                    <!-- <li class="<?php if ($page_name == 'influencer') echo 'active';?>">
 
                         <a href="<?php echo site_url('admin/influencer'); ?>">
 
@@ -140,9 +140,9 @@
 
                         </a>
 
-                    </li>
+                    </li> -->
 
-                <li class="<?php if ($page_name == 'company') echo 'active';?>">
+                <!-- <li class="<?php if ($page_name == 'company') echo 'active';?>">
 
                     <a href="<?php echo site_url('admin/company'); ?>">
 
@@ -152,7 +152,7 @@
 
                     </a>
 
-                </li>
+                </li> -->
 
             </ul>
 

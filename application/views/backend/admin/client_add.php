@@ -65,7 +65,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="field-2" class="col-sm-4 control-label"><?php echo get_phrase('website'); ?></label>
 
                     <div class="col-sm-7">
@@ -118,7 +118,7 @@
                             <input type="text" class="form-control" name="twitter_profile_link" value="" >
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
                 <div class="form-group">
