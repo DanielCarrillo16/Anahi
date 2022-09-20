@@ -13,6 +13,8 @@ Servicios
   </div>
 
   <div class="panel-body" >
+      
+    <div class="table-responsive">    
 
     <table class="table  datatable" id="product_table">
 
@@ -163,6 +165,8 @@ Servicios
     	</tbody>
 
     </table>
+    
+    </div>
 
   </div>
 

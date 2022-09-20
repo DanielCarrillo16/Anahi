@@ -13,6 +13,7 @@
 		</div>
 	</div>
 	<div class="panel-body" >
+	    <div class="table-responsive">
 		<table class="table   datatable">
 			<thead>
 				<tr>
@@ -53,6 +54,7 @@
 				<?php $counter++; endforeach;?>
 			</tbody>
 		</table>
+		</div>
 	</div>
 </div>
 <script>

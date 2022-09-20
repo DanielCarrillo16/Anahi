@@ -10,7 +10,6 @@
 
 		<div class="panel-heading">
 			<div class="panel-title">
-				<?php echo get_phrase('task_schedule');?>
 			</div>
 			
 		</div>

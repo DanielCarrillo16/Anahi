@@ -1,5 +1,5 @@
 <br />
-
+<div class="table-responsive">
 <table class="table  datatable" id="table-1">
     <thead>
         <tr>
@@ -103,6 +103,8 @@
     </tbody>
 
 </table>
+
+</div>
 
 <script type="text/javascript">
     var responsiveHelper;

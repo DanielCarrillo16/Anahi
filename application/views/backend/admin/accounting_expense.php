@@ -38,6 +38,8 @@
 		<div class="panel-body" >
 			<div class="row">
 				<div class="col-md-12" id="client_payment_body" style="text-align: center; margin-bottom: 50px;">
+				    
+				    <div class="table-responsive">
 					
 					<table class="table  datatable" id="">
 						<thead>
@@ -107,7 +109,7 @@
 							<?php endforeach;?>
 						</tbody>
 					</table>
-	
+					</div>
 				</div>
 			</div>
 		</div>

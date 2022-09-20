@@ -6,6 +6,7 @@
     </div>
   </div>
   <div class="panel-body" >
+    <div class="table-responsive">
     <table class="table  datatable" id="notice_table">
     	<thead>
     		<tr>
@@ -89,6 +90,7 @@
     		<?php endforeach;?>
     	</tbody>
     </table>
+    </div>
   </div>
 </div>
 

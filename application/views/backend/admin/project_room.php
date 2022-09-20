@@ -111,6 +111,14 @@
 			<i class="entypo-credit-card"></i>
 		</a>
 
+		<a style="text-align: left;" href="<?php echo site_url('admin/projectroom/note/' . $project_code);?>" 
+			class="<?php if ($room_page == 'project_note') 
+								echo 'btn btn-primary';
+							else 
+								echo 'btn btn-default';?> btn-block btn-icon icon-left">
+			<?php echo get_phrase('note');?>
+			<i class="entypo-doc-text-inv"></i>
+		</a>
             <a style="text-align: left;" href="<?php echo site_url('admin/projectroom/expense/' . $project_code);?>" 
 			class="<?php if ($room_page == 'project_expense') 
 								echo 'btn btn-primary';

@@ -1,4 +1,4 @@
-
+<div class="table-responsive">
 <table class="table   datatable">
     <thead>
         <tr>
@@ -87,7 +87,7 @@
 <?php endforeach; ?>
 </tbody>
 </table>
-
+</div>
 
 <script type="text/javascript">
 

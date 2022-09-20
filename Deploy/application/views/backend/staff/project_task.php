@@ -10,7 +10,6 @@
 
 		<div class="panel-heading">
 			<div class="panel-title">
-				<?php echo get_phrase('task_schedule');?>
 			</div>
 			
 		</div>
@@ -27,6 +26,7 @@
 
 	</div>
 
+    
     <a href="#" class="btn btn-info pull-right tooltip-primary"
         onclick="showAjaxModal('<?php echo site_url('modal/popup/project_task_add/' . $row['project_code']); ?>');">
         <i class="entypo-plus"></i> <?php echo get_phrase('add_new_task');?>
@@ -71,10 +71,9 @@
                     <i class="entypo-calendar" style="color: #ccc;"></i>
                         <?php echo date("d M Y", $row2['timestamp_start']);?>  <b>to</b>  <?php echo date("d M Y", $row2['timestamp_end']); ?>
 
-
                     <a href="#" class="btn btn-default btn-xs tooltip-primary pull-right" data-toggle="tooltip"  data-placement="left" 
                         data-original-title="<?php echo get_phrase('delete');?>"
-                        onclick="confirm_modal('<?php echo site_url('staff/project_task/delete/' . $row2['project_task_id']); ?>', '<?php echo site_url('staff/reload_projectroom_task/' . $row['project_code']); ?>');">
+                        onclick="confirm_modal('<?php echo site_url('admin/project_task/delete/' . $row2['project_task_id']); ?>', '<?php echo site_url('admin/reload_projectroom_task/' . $row['project_code']); ?>');">
                         <i class="entypo-trash" style="color: #ccc;"></i>
                     </a>
 
@@ -117,7 +116,11 @@
                 if ($row['client_id'] < 1):
                     ?>
                     <center>
-                        <?php echo get_phrase('no_client_added_yet');?>
+                        <button type="button" class="btn btn-default btn-icon icon-left" style="margin:10px;"
+                                onclick="showAjaxModal('<?php echo site_url('modal/popup/project_edit/' . $row['project_code']); ?>');">
+                                    <?php echo get_phrase('add_client'); ?>
+                            <i class="entypo-pencil"></i>
+                        </button>
                     </center>
             <?php endif; ?>
 
@@ -197,8 +200,18 @@
     ?>
         <div class="panel panel-primary" data-collapsed="0">
             <div class="panel-heading">
-                <div class="panel-title">
-                    <i class="entypo-users"></i> Assigned staff
+                <div class="row">
+                    <div class="col-md-8 panel-title">
+                        <i class="entypo-users"></i> Assigned staff
+                    </div>
+                    <div class="col-md-4 panel-options">
+                <?php if ($number_of_staffs > 0): ?>
+                            <a href="<?php echo site_url('admin/projectroom/edit/' . $project_code); ?>" 
+                                    class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo get_phrase('manage_staff'); ?>">
+                                <i class="entypo-pencil"></i>
+                            </a>
+                <?php endif; ?>
+                    </div>
                 </div>
             </div>
             <div class="panel-body">
@@ -208,7 +221,11 @@
                         ?>
 
                         <center>
-                            <?php echo get_phrase('no_staffs_assigned_yet');?>
+                            <a  href="<?php echo site_url('admin/projectroom/edit/' . $project_code); ?>" 
+                                class="btn btn-default btn-icon icon-left" style="margin:10px;">
+                                <?php echo get_phrase('manage_staff'); ?>
+                                <i class="entypo-pencil"></i>
+                            </a>
                         </center>
                     <?php endif; ?>
 

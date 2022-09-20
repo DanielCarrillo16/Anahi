@@ -1,58 +1,62 @@
-<?php 
-    $dropbox_data_app_key = $this->db->get_where('settings' , array(
-        'type' => 'dropbox_data_app_key'))->row()->description;
+<?php
+$dropbox_data_app_key = $this->db->get_where('settings', array(
+            'type' => 'dropbox_data_app_key'))->row()->description;
 ?>
 
 
-<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs"data-app-key="<?php echo $dropbox_data_app_key;?>"></script>
+<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" 
+    id="dropboxjs" data-app-key="<?php echo $dropbox_data_app_key; ?>"></script>
 
-<?php 
-	$current_project = $this->db->get_where('project' , array(
-		'project_code' => $project_code
-	))->result_array();
-	foreach ($current_project as $row):
-?>
-<div class="col-md-7">
-	
-	<div class="panel panel-primary" data-collapsed="0">
+<?php
+$current_project = $this->db->get_where('project', array(
+            'project_code' => $project_code
+        ))->result_array();
+foreach ($current_project as $row):
+    ?>
+    <div class="col-md-6">
 
-			<div class="panel-heading">
-				<div class="panel-title">
-					<?php echo get_phrase('upload_files');?>
-				</div>
-				
-			</div>
-			
-			<div class="panel-body">
-				
+        <div class="panel panel-primary" data-collapsed="0">
+
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <?php echo get_phrase('upload_files'); ?>
+                </div>
+
+            </div>
+
+            <div class="panel-body">
+
                 <!-- UPLOADERS -->
 
                 <ul class="nav nav-tabs bordered"><!-- available classes "bordered", "right-aligned" -->
                     <li class="active">
                         <a href="#home" data-toggle="tab">
-                            <span><?php echo get_phrase('regular_upload');?></span>
+                            <span><?php echo get_phrase('regular_upload'); ?></span>
                         </a>
                     </li>
                     <li class="">
                         <a href="#profile" data-toggle="tab">
-                            <span><?php echo get_phrase('multiple_file_upload');?></span>
+                            <span><?php echo get_phrase('multiple_file_upload'); ?></span>
                         </a>
                     </li>
                     <!-- <li class="">
                         <a href="#messages" data-toggle="tab">
-                            <span><?php echo get_phrase('dropbox_upload');?></span>
+                            <span><?php echo get_phrase('dropbox_upload'); ?></span>
                         </a>
                     </li> -->
                 </ul>
-                
+
                 <div class="tab-content">
-                <br>
+                    <br>
+
                     <!-- NORMAL UPLOADER -->
                     <div class="tab-pane active" id="home">
 
-                    <?php echo form_open(site_url('staff/project_file/upload/' . $row['project_code']), array(
-                        'class' => 'form-horizontal form-groups-bordered validate validate project-file-add' ,
-                            'enctype' => 'mutipart/form-data'));?>
+                        <?php
+                        echo form_open(site_url('admin/project_file/upload/' . $row['project_code']), array(
+                            'class' => 'form-horizontal form-groups-bordered validate validate project-file-add',
+                            'enctype' => 'mutipart/form-data'));
+                        ?>
 
                         <div class="form-group">
                             <label for="field-1" class="col-sm-4 control-label"><?php echo get_phrase('short_note'); ?></label>
@@ -86,23 +90,24 @@
                             </div>
                         </div>
 
-                    <?php echo form_close();?>
-                        
+                        <?php echo form_close(); ?>
+
                     </div>
 
                     <!-- DROPZONE UPLOADER -->
                     <div class="tab-pane" id="profile">
 
                         <?php
-                        echo form_open(site_url('staff/project_file/dropzone_upload/' . $row['project_code']), array('class' => 'form-horizontal form-groups-bordered validate validate project-file-multiple-add',
-                            'enctype' => 'mutipart/form-data'));
+                            echo form_open(site_url('admin/project_file/dropzone_upload/' . $row['project_code']), array(
+                                'class' => 'form-horizontal form-groups-bordered validate validate project-file-multiple-add',
+                                    'enctype' => 'mutipart/form-data'));
                         ?>
                         <div class="form-group">
                             <label for="field-1" class="col-sm-4 control-label">Select File</label>
                             <div class="col-sm-6">
                                 <input type="file" 
                                        class=" file2  btn btn-primary"
-                                       multiple="multiple" data-label="<i class='glyphicon glyphicon-circle-arrow-up'></i> &nbsp;Browse Files" 
+                                       multiple="multiple" data-label="<i class='entypo-up'></i> &nbsp; Buscar archivos" 
                                        style="left: 21.25px; top: 3.5px;" name="userfile[]">
 
                             </div>
@@ -111,66 +116,69 @@
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-6">
                                 <button type="submit" class="btn btn-info"  id="submit-button">
-                                    Upload File</button>
+                                    Subir archivo</button>
                                 <span id="preloader-form"></span>
                             </div>
                         </div>
-    <?php echo form_close(); ?> 
+                    <?php echo form_close(); ?> 
 
                     </div>
 
                     <!-- DROPBOX UPLAODER -->
                     <div class="tab-pane" id="messages">
-                        <?php echo form_open(site_url('staff/project_file/dropbox_upload/' . $row['project_code']), array(
-                        'class' => 'form-horizontal form-groups-bordered validate validate project-file-dropbox' ,
-                            'enctype' => 'mutipart/form-data'));?>
+                    <?php
+                        echo form_open(site_url('admin/project_file/dropbox_upload/' . $row['project_code']), array(
+                            'class' => 'form-horizontal form-groups-bordered validate validate project-file-dropbox',
+                                'enctype' => 'mutipart/form-data'));
+                    ?>
 
-                            <div class="form-group">
-                                <label for="field-1" class="col-sm-4 control-label"><?php echo get_phrase('file_chooser'); ?></label>
+                        <div class="form-group">
+                            <label for="field-1" class="col-sm-4 control-label"><?php echo get_phrase('file_chooser'); ?></label>
 
-                                <div class="col-sm-6">
-                                    <!-- dropbox -->
-                                    <div id="container_chooser"></div>
-                                    <img src="" id="dropbox_thumb" style="height:30px;" />
-                                    <input type="hidden" name="dropbox_file_link" value="" id="dropbox_file_link" />
-                                    <input type="hidden" name="dropbox_file_name" value="" id="dropbox_file_name" />
-                                </div>
+                            <div class="col-sm-6">
+                                <!-- dropbox -->
+                                <div id="container_chooser"></div>
+                                <img src="" id="dropbox_thumb" style="height:30px;" />
+                                <input type="hidden" name="dropbox_file_link" value="" id="dropbox_file_link" />
+                                <input type="hidden" name="dropbox_file_name" value="" id="dropbox_file_name" />
                             </div>
-                            <div class="form-group">
-                                <label for="field-1" class="col-sm-4 control-label"><?php echo get_phrase('short_note'); ?></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="field-1" class="col-sm-4 control-label"><?php echo get_phrase('short_note'); ?></label>
 
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="description" id="title" value="" >
-                                </div>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="description" id="title" value="" >
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-offset-4 col-sm-6">
-                                    <button type="submit" class="btn btn-info" id="submit-button">
-                                        <?php echo get_phrase('upload_file'); ?></button>
-                                    <span id="dropbox-preloader-form"></span>
-                                </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-6">
+                                <button type="submit" class="btn btn-info" id="submit-button">
+                                    <?php echo get_phrase('upload_file'); ?>
+                                </button>
+                                <span id="dropbox-preloader-form"></span>
                             </div>
-                        <?php echo form_close();?> 
+                        </div>
+                        <?php echo form_close(); ?> 
                         <!--<div id="container_saver"></div>
                          dropbox -->
 
                     </div>
 
                 </div>
-			</div>
-		</div>
+            </div>
+        </div>
 
 
-    <div class="project_files_container">
-        
-        <?php include 'project_file_list.php';?>
+        <div class="project_files_container">
+
+    <?php include 'project_file_list.php'; ?>
+
+        </div>
 
     </div>
 
-</div>
-
-<div class="col-md-3">
+    <div class="col-md-3">
     
 
     <!-- client -->
@@ -183,13 +191,18 @@
             </div>
         </div>
         <div class="panel-body">
-             <?php
+            <?php
                 if ($row['client_id'] < 1):
                     ?>
                     <center>
-                        <?php echo get_phrase('no_client_added_yet');?>
+                        <a href="<?php echo site_url('admin/projectroom/edit/' . $project_code); ?>" 
+                            class="btn btn-default btn-icon icon-left" style="margin:10px;">
+                            <?php echo get_phrase('add_client'); ?>
+                            <i class="entypo-pencil"></i>
+                        </a>
                     </center>
             <?php endif; ?>
+
             <table width="100%" border="0">
             <tbody>
                 <?php
@@ -266,19 +279,35 @@
     ?>
         <div class="panel panel-primary" data-collapsed="0">
             <div class="panel-heading">
-                <div class="panel-title">
-                    <i class="entypo-users"></i> Assigned staff
+                <div class="row">
+                    <div class="col-md-8 panel-title">
+                        <i class="entypo-users"></i> Assigned staff
+                    </div>
+                    <div class="col-md-4 panel-options">
+                <?php if ($number_of_staffs > 0): ?>
+                            <a href="<?php echo site_url('admin/projectroom/edit/' . $project_code); ?>" 
+                                    class="pull-right tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo get_phrase('manage_staff'); ?>">
+                                <i class="entypo-pencil"></i>
+                            </a>
+                <?php endif; ?>
+                    </div>
                 </div>
             </div>
             <div class="panel-body">
-                 <?php
+
+                <?php
                     if ($number_of_staffs < 1):
                         ?>
 
                         <center>
-                            <?php echo get_phrase('no_staff_assigned_yet');?>
+                            <a  href="<?php echo site_url('admin/projectroom/edit/' . $project_code);?>" 
+                                class="btn btn-default btn-icon icon-left" style="margin:10px;">
+                                <?php echo get_phrase('manage_staff'); ?>
+                                <i class="entypo-pencil"></i>
+                            </a>
                         </center>
                     <?php endif; ?>
+
                 <?php
                     if ($number_of_staffs > 0):
                         for ($i = 0; $i < $number_of_staffs; $i++):
@@ -355,6 +384,7 @@
 </div>
 
 
+
     <script type="text/javascript">
 
         options_chooser = {
@@ -419,11 +449,11 @@
 
 <script>
     // url for refresh data after ajax form submission
-    var post_refresh_url = '<?php echo site_url('staff/reload_projectroom_file_list/' . $project_code); ?>';
+    var post_refresh_url = '<?php echo base_url(); ?>index.php?admin/reload_projectroom_file_list/<?php echo $project_code; ?>';
 </script>
 
 <!-- calling ajax form submission plugin for specific form -->
-<script src="<?php echo base_url('assets/js/jquery.form.js');?>"></script>
+<script src="assets/js/jquery.form.js"></script>
 
 <script type="text/javascript">
         // ajax form plugin calls at each modal loading,
@@ -563,4 +593,3 @@
         }
 
 </script>
-
