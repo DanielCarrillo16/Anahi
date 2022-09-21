@@ -36,7 +36,7 @@
                 </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" style="text-align:center;">Are you sure to delete this information ?</h4>
+                    <h4 class="modal-title" style="text-align:center;">Estas seguro de eliminar esta información?</h4>
                 </div>
                 
                 
@@ -96,7 +96,7 @@
                 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" style="text-align:center;">Are you sure to delete this information ?</h4>
+                    <h4 class="modal-title" style="text-align:center;">Estas seguro de eliminar esta información?</h4>
                 </div>
                 
                 
