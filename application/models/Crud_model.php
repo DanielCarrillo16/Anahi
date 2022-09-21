@@ -1121,6 +1121,8 @@ class Crud_model extends CI_Model
         $data['timestamp']    = strtotime($this->input->post('timestamp'));
         $data['status']       = $this->input->post('status');
         $data['note']         = $this->input->post('note');
+        // $data['description']    = $this->input->post('description');
+        // $data['payment_method'] = $this->input->post('payment_method');
         $data['client_id']    = $this->db->get_where('project', array(
             'project_code' => $project_code
         ))->row()->client_id;
