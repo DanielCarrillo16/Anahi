@@ -12,7 +12,7 @@
                 <?php echo form_open(site_url('admin/project_historia_clinica/create/'.$param2), array('class' => 'form-horizontal form-groups-bordered validate project-historia_clinica-add', 'enctype' => 'multipart/form-data')); ?>
 
                 <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('title'); ?>*</label>
+                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Título'); ?>*</label>
 
                     <div class="col-sm-7">
                         <input type="text" class="form-control" name="title" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
@@ -22,7 +22,22 @@
                 <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Nombre_completo')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="nombre_completo" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
+                    <input type="text" class="form-control" name="nombre_completo" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
+                </div>
+            </div>
+        
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Número_de_expediente')?>*</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="numero_expediente" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Fecha_de_creacion')?>*</label>
+                <div class="col-sm-7">
+                <input type="date" class="form-control" name="creacion" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
                 </div>
             </div>
 
@@ -34,6 +49,13 @@
             </div>
 
             <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('edad')?>*</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="edad" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('sexo'); ?>*</label>
                 <div class="col-sm-5">
                     <select name="sexo" class="form-control selectboxit" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>">
@@ -41,6 +63,20 @@
                         <option value="0" data-iconurl=""><?php echo get_phrase('masculino'); ?></option>
                         <option value="1"><?php echo get_phrase('femenino'); ?></option>
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Número_de_teléfono')?>*</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="telefono" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('direccion')?>*</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="direccion" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
                 </div>
             </div>
 
@@ -75,76 +111,93 @@
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Alergias')?></label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="alergias"  value="" autofocus>
+                <input class="form-check-input" type="checkbox" value="1" name="alergias">
+                    <label class="form-check-label" for="alergias">
+                        Si
+                    </label><br>
+                    <input class="form-check-input" type="checkbox" value="0" name="alergias">
+                    <label class="form-check-label" for="alergias">
+                        No
+                    </label>
                 </div>
-            </div>
+            </div><br>
 
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Farmacos_actuales')?></label>
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Cuales(alergias)')?></label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="farmacos_actuales"  value="" autofocus>
+                <input type="text" class="form-control" name="alergias_notas"  value="" autofocus>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('alcohol'); ?></label>
-                <div class="col-sm-5">
-                    <select name="alcohol" class="form-control selectboxit">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('no'); ?></option>
-                        <option value="1"><?php echo get_phrase('si'); ?></option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Desde_cuando / Notas')?>*</label>
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('farmacos_actuales')?></label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="alcohol_notas" value="" autofocus>
+                    <input class="form-check-input" type="checkbox" value="1" name="farmacos_actuales">
+                    <label class="form-check-label" for="farmacos_actuales">
+                        Si
+                    </label><br>
+                    <input class="form-check-input" type="checkbox" value="0" name="farmacos_actuales">
+                    <label class="form-check-label" for="farmacos_actuales">
+                        No
+                    </label>
                 </div>
-            </div>
+            </div><br>
 
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('tabaco'); ?></label>
-                <div class="col-sm-5">
-                    <select name="tabaco" class="form-control selectboxit">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('no'); ?></option>
-                        <option value="1"><?php echo get_phrase('si'); ?></option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Desde_cuando / Notas')?>*</label>
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Cuales(farmacos_actuales)')?></label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="tabaco_notas" value="" autofocus>
+                <input type="text" class="form-control" name="farmacos_actuales_notas"  value="" autofocus>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('sustancias'); ?></label>
-                <div class="col-sm-5">
-                    <select name="sustancias" class="form-control selectboxit">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('no'); ?></option>
-                        <option value="1"><?php echo get_phrase('si'); ?></option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Desde_cuando / Notas')?>*</label>
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Antecedentes_de_procedimientos_quirurjicos_o_estéticos)')?></label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="sustancias_notas" value="" autofocus>
+                <input class="form-check-input" type="checkbox" value="1"  name="procedimientos_quirurjicos">
+                    <label class="form-check-label" for="procedimientos_quirurjicos">
+                        Si
+                    </label><br>
+                <input class="form-check-input" type="checkbox" value="0"  name="procedimientos_quirurjicos">
+                    <label class="form-check-label" for="procedimientos_quirurjicos">
+                        No
+                    </label>
                 </div>
             </div>
 
+            <div class="form-group" id="quirurjicos">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Cuando')?>*</label>
+                <div class="col-sm-7">
+                <input type="date" class="form-control" name="quirurjicos_fecha" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
+                </div>
+            </div><br>
+
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Glogau'); ?></label>
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Antecedentes_personales_no_patologicos')?></label>
+                <div class="col-sm-7">
+                <input class="form-check-input" type="checkbox" value="1" name="alcohol">
+                    <label class="form-check-label" for="alcohol">
+                        Alcoholismo
+                    </label><br>
+                    <input class="form-check-input" type="checkbox" value="1" name="tabaco">
+                    <label class="form-check-label" for="tabaco">
+                        Tabaquismo
+                    </label><br>
+                    <input class="form-check-input" type="checkbox" value="1" name="sustancias">
+                    <label class="form-check-label" for="sustancias">
+                        Toxicomanias
+                    </label>
+                </div>
+            </div><br>
+
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Escala_de_Glogau'); ?></label>
                 <div class="col-sm-5">
                     <select name="glogau" class="form-control selectboxit">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('tipo_1'); ?></option>
-                        <option value="1"><?php echo get_phrase('tipo_2'); ?></option>
-                        <option value="2" data-iconurl=""><?php echo get_phrase('tipo_3'); ?></option>
-                        <option value="3"><?php echo get_phrase('tipo_4'); ?></option>
+                        <option value="0" data-iconurl=""><?php echo get_phrase('Tipo 1-  Leve (20 a 30 años)'); ?></option>
+                        <option value="1"><?php echo get_phrase('Tipo 2-  Moderado (30 a 40 años)'); ?></option>
+                        <option value="2" data-iconurl=""><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
+                        <option value="3"><?php echo get_phrase('Tipo 4 -  Severo (Arriba de 60 años)'); ?></option>
                     </select>
                 </div>
             </div>
@@ -152,79 +205,15 @@
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Fitzpatrck'); ?></label>
                 <div class="col-sm-5">
                     <select name="fitz" class="form-control selectboxit">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('tipo_1'); ?></option>
-                        <option value="1"><?php echo get_phrase('tipo_2'); ?></option>
-                        <option value="2" data-iconurl=""><?php echo get_phrase('tipo_3'); ?></option>
-                        <option value="3"><?php echo get_phrase('tipo_4'); ?></option>
-                        <option value="4"><?php echo get_phrase('tipo_5'); ?></option>
-                        <option value="5"><?php echo get_phrase('tipo_6'); ?></option>
+                        <option value="0" data-iconurl=""><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                        <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                        <option value="2" data-iconurl=""><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                        <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                        <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                        <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
                     </select>
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona frontal')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_frontal_cantidad" value="" autofocus>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona corrugador')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_corrugador_cantidad" value="" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona proceus')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_proceus_cantidad" value="" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona ojo')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_ojo_cantidad" value="" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona subpalpebral')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_subpalpebral_cantidad" value="" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona nariz')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_nariz_cantidad" value="" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona boca')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_boca_cantidad" value="" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona masetero')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_masetero_cantidad" value="" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona mentoniano')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_mentoniano_cantidad" value="" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona otros')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_otros_cantidad" value="" autofocus>
-                </div>
-            </div>
-                    
-
 
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Notas_agregadas')?></label>
@@ -278,10 +267,69 @@
     var post_refresh_url = '<?php echo site_url('admin/reload_projectroom_historia_clinica/' . $param2); ?>';
 </script>
 
+<!-- <script>
+    (document).ready(function(){
 
+    $('#quirurjicos1').on('click', function(){
+        var c = document.getElementById('quirurjicos1').checked;
+            if (c) {
+
+            $("#quirurjicos_fecha").show();
+
+        }
+
+        else {
+             $("#quirurjicos_fecha").hide();
+
+        }
+
+
+});
+
+});
+</script> -->
 <script type="text/javascript">
     // ajax form plugin calls at each modal loading,
 $(document).ready(function() {
+
+
+    //VALIDA UN SOLO CHECKBOX 
+
+    //Alergias
+    let Checked = null;
+    for (let CheckBox1 of document.getElementsByName('alergias')){
+        CheckBox1.onclick = function(){
+            if(Checked!=null){
+                Checked.checked = false;
+                Checked = CheckBox1;
+            }
+            Checked = CheckBox1;
+        }
+    }
+
+    //farmacos_actuales
+    let Checked2 = null;
+    for (let CheckBox2 of document.getElementsByName('farmacos_actuales')){
+        CheckBox2.onclick = function(){
+            if(Checked2!=null){
+                Checked2.Checked2 = false;
+                Checked2 = CheckBox2;
+            }
+            Checked2 = CheckBox2;
+        }
+    }
+
+    //procedimientos_quirurjicos
+    let Checked3 = null;
+    for (let CheckBox3 of document.getElementsByName('procedimientos_quirurjicos')){
+        CheckBox3.onclick = function(){
+            if(Checked3!=null){
+                Checked3.Checked3 = false;
+                Checked3 = CheckBox3;
+            }
+            Checked3 = CheckBox3;
+        }
+    }
 
    //config for project task adding
     var options = {
@@ -345,8 +393,6 @@ function validate_project_historia_clinica_add(formData, jqForm, options) {
 
 // ajax success response after form submission
 function show_response_project_historia_clinica_add(responseText, statusText, xhr, $form)  {
-
-    
     toastr.success("Project historia clinica added successfully", "Success");
     $('#modal_ajax').modal('hide');
     reload_data(post_refresh_url);
@@ -369,8 +415,6 @@ function reload_data(url)
             
             // Replace new page data
             jQuery('.main_data').html(response);
-
-            
 
             // calls the tooltip again on ajax success
             $('[data-toggle="tooltip"]').each(function(i, el)
