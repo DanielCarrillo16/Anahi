@@ -6657,7 +6657,7 @@
     return root;
   };
   d3.time = {};
-  var d3_time = Date, d3_time_daySymbols = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
+  var d3_time = Date, d3_time_daySymbols = [ "Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado" ];
   d3_time_utc.prototype = {
     getDate: function() {
       return this._.getUTCDate();
@@ -6722,7 +6722,7 @@
   };
   var d3_time_prototype = Date.prototype;
   var d3_time_formatDateTime = "%a %b %e %H:%M:%S %Y", d3_time_formatDate = "%m/%d/%y", d3_time_formatTime = "%H:%M:%S";
-  var d3_time_days = d3_time_daySymbols, d3_time_dayAbbreviations = d3_time_days.map(d3_time_formatAbbreviate), d3_time_months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ], d3_time_monthAbbreviations = d3_time_months.map(d3_time_formatAbbreviate);
+  var d3_time_days = d3_time_daySymbols, d3_time_dayAbbreviations = d3_time_days.map(d3_time_formatAbbreviate), d3_time_months = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ], d3_time_monthAbbreviations = d3_time_months.map(d3_time_formatAbbreviate);
   d3.time.format = function(template) {
     function format(date) {
       var string = [], i = -1, j = 0, c, f;

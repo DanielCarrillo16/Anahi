@@ -40,7 +40,7 @@ foreach ($current_project as $row):
                     <div class="col-md-4" style="margin-top: 5px;">
                         <label>
                             <input type="file" class="form-control file2 inline btn btn-default" name="userfile"
-                                   data-label="<i class='entypo-upload'></i> Attach file" />
+                                   data-label="<i class='entypo-upload'></i> Subir archivo" />
                         </label>
                     </div>
 

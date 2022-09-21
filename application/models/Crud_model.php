@@ -1001,6 +1001,107 @@ class Crud_model extends CI_Model
         }
     ///
 
+    ///Funcion para manejar los fillers
+    function create_project_filler($project_code = ''){
+        $data['project_code']           = $project_code;
+        $data['title']                  = $this->input->post('title');
+        $data['aplicacion']     	    = $this->input->post('aplicacion'); 
+        $data['valoracion']     	    = $this->input->post('valoracion'); 
+        $data['relleno']         	    = $this->input->post('relleno'); 
+        $data['procedimiento']     	    = $this->input->post('procedimiento'); 
+        $data['lote']            	    = $this->input->post('lote'); 
+        $data['cantidad_producto']     	= $this->input->post('cantidad_producto'); 
+        $data['propuesta']     	        = $this->input->post('propuesta'); 
+        $data['user_type']              = $this->session->userdata('login_type');
+        $data['user_id']                = $this->session->userdata('login_user_id');
+        $data['assigned_staff']         = $this->input->post('assigned_staff');
+        $data['timestamp']              = strtotime(date("d M,Y"));
+
+        $this->db->insert('project_filler', $data);
+    }
+
+    function update_project_filler($project_filler_id = '')
+    {
+        $data['title']                  = $this->input->post('title');
+        $data['aplicacion']     	    = $this->input->post('aplicacion'); 
+        $data['valoracion']     	    = $this->input->post('valoracion'); 
+        $data['relleno']         	    = $this->input->post('relleno'); 
+        $data['procedimiento']     	    = $this->input->post('procedimiento'); 
+        $data['lote']            	    = $this->input->post('lote'); 
+        $data['cantidad_producto']     	= $this->input->post('cantidad_producto'); 
+        $data['propuesta']     	        = $this->input->post('propuesta'); 
+        $data['user_type']              = $this->session->userdata('login_type');
+        $data['user_id']                = $this->session->userdata('login_user_id');
+        $data['assigned_staff']         = $this->input->post('assigned_staff');
+        if ($_FILES['userfile']['name'] != '') {
+            $data['file'] = $_FILES['userfile']['name'];
+        }
+
+        $this->db->where('project_filler_id', $project_filler_id);
+        $this->db->update('project_filler', $data);
+        move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
+
+    }
+
+    function delete_project_filler($project_filler_id = '')
+    {
+        $this->db->where('project_filler_id', $project_filler_id);
+        $this->db->delete('project_filler');
+    }
+
+
+        ///Funcion para manejar las toxinas botulinicas
+        function create_project_toxina_botulinica($project_code = ''){
+            $data['project_code']                 = $project_code;
+            $data['title']                        = $this->input->post('title');
+            $data['id_historial_clinico']         = $this->input->post('id_historial_clinico');
+            $data['zona_frontal_cantidad']        = $this->input->post('zona_frontal_cantidad'); 
+            $data['zona_corrugador_cantidad']     = $this->input->post('zona_corrugador_cantidad');
+            $data['zona_proceus_cantidad']        = $this->input->post('zona_proceus_cantidad');
+            $data['zona_ojo_cantidad']            = $this->input->post('zona_ojo_cantidad');
+            $data['zona_subpalpebral_cantidad']   = $this->input->post('zona_subpalpebral_cantidad');
+            $data['zona_nariz_cantidad']          = $this->input->post('zona_nariz_cantidad'); 
+            $data['zona_boca_cantidad']           = $this->input->post('zona_boca_cantidad');
+            $data['zona_masetero_cantidad']       = $this->input->post('zona_masetero_cantidad');
+            $data['zona_mentoniano_cantidad']     = $this->input->post('zona_mentoniano_cantidad');
+            $data['zona_otros_cantidad']          = $this->input->post('zona_otros_cantidad');
+            $data['assigned_staff']               = $this->input->post('assigned_staff');
+            $data['timestamp']                    = strtotime(date("d M,Y"));
+    
+            $this->db->insert('project_toxina_botulinica', $data);
+        }
+    
+        function update_project_toxina_botulinica($project_toxina_botulinica_id = '')
+        {
+            $data['title']                        = $this->input->post('title');
+            $data['id_historial_clinico']         = $this->input->post('id_historial_clinico');
+            $data['zona_frontal_cantidad']        = $this->input->post('zona_frontal_cantidad'); 
+            $data['zona_corrugador_cantidad']     = $this->input->post('zona_corrugador_cantidad');
+            $data['zona_proceus_cantidad']        = $this->input->post('zona_proceus_cantidad');
+            $data['zona_ojo_cantidad']            = $this->input->post('zona_ojo_cantidad');
+            $data['zona_subpalpebral_cantidad']   = $this->input->post('zona_subpalpebral_cantidad');
+            $data['zona_nariz_cantidad']          = $this->input->post('zona_nariz_cantidad'); 
+            $data['zona_boca_cantidad']           = $this->input->post('zona_boca_cantidad');
+            $data['zona_masetero_cantidad']       = $this->input->post('zona_masetero_cantidad');
+            $data['zona_mentoniano_cantidad']     = $this->input->post('zona_mentoniano_cantidad');
+            $data['zona_otros_cantidad']          = $this->input->post('zona_otros_cantidad');
+            $data['assigned_staff']               = $this->input->post('assigned_staff');
+            if ($_FILES['userfile']['name'] != '') {
+                $data['file'] = $_FILES['userfile']['name'];
+            }
+    
+            $this->db->where('project_toxina_botulinica_id', $project_toxina_botulinica_id);
+            $this->db->update('project_toxina_botulinica', $data);
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
+    
+        }
+    
+        function delete_project_toxina_botulinica($project_toxina_botulinica_id = '')
+        {
+            $this->db->where('project_toxina_botulinica_id', $project_toxina_botulinica_id);
+            $this->db->delete('project_toxina_botulinica');
+        }
+
     //Nota de evolucion
     function create_project_nota_evolucion($project_code = ''){
         $data['project_code']           = $project_code;

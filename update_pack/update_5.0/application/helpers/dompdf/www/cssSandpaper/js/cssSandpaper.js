@@ -8,7 +8,7 @@
  * box-shadow and gradient in IE.  It also provides a common syntax for other
  * browsers that support vendor-specific methods.
  *
- * Written by: Zoltan Hawryluk. Version 1.0 beta 1 completed on March 8, 2010.
+ * Written by: Zoltan Hawryluk. Version 1.0 beta 1 completed on Marzo 8, 2010.
  *
  * Some routines are based on code from CSS Gradients via Canvas v1.2
  * by Weston Ruter <http://weston.ruter.net/projects/css-gradients-via-canvas/>

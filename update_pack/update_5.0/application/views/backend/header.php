@@ -245,19 +245,7 @@
         
         </ul>
 
-        <ul class="list-inline links-list pull-right" style="padding-top:10px; padding-bottom:0px;">
-            <!-- RIGHT BAR TOGGLE BUTTON ICON-->
-            <li class="notifications dropdown tooltip-primary" data-toggle="tooltip" data-original-title="<?php echo get_phrase('to_do');?>"
-                data-placement="left" style="padding: 0px;">
-                <a href="#" class="dropdown-toggle"  data-toggle="chat"
-                   style="display:block;" >
-                    <i class="entypo-menu" style="color: #ccc;"></i>
-                    <span id="incomplete_todo_number">
-                        <?php $this->crud_model->get_incomplete_todo();?>
-                    </span>
-                </a>
-            </li>
-        </ul>
+        
     </div>
 
 </div>

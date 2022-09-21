@@ -635,7 +635,7 @@
 
 
 
-        <li class="side-nav-item <?php if ($page_name == 'addons' || $page_name == 'addon_add' || $page_name == 'available_addon'): ?> opened active has-sub <?php endif; ?>">
+        <!--<li class="side-nav-item <?php if ($page_name == 'addons' || $page_name == 'addon_add' || $page_name == 'available_addon'): ?> opened active has-sub <?php endif; ?>">
 
             <a href="javascript: void(0);" class="side-nav-link">
 
@@ -673,7 +673,7 @@
 
             </ul>
 
-        </li>
+        </li>--!>
 
 
 
