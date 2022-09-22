@@ -83,9 +83,20 @@
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('sexo'); ?>*</label>
                 <div class="col-sm-5">
                     <select name="sexo" class="form-control selectboxit" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>">
-                        <option value="" disabled selected><?php echo $row['sexo']; ?></option>
-                        <option value="0" data-iconurl=""><?php echo get_phrase('masculino'); ?></option>
-                        <option value="1"><?php echo get_phrase('femenino'); ?></option>
+                        <?php 
+                            if($row['sexo'] == 0){
+                                ?>
+                                <option value="0" selected="selected"><?php echo get_phrase('masculino'); ?></option>
+                                <option value="1"><?php echo get_phrase('femenino'); ?></option>
+                                <?php
+                            }else{
+                                ?>
+                                <option value="0"><?php echo get_phrase('masculino'); ?></option>
+                                <option value="1" selected="selected"><?php echo get_phrase('femenino'); ?></option>
+                                <?php
+                            }
+                        ?>
+                        
                     </select>
                 </div>
             </div>
@@ -131,18 +142,39 @@
                 <input type="text" class="form-control" name="motivo_consulta" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['motivo_consulta']; ?>" autofocus>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Alergias')?></label>
                 <div class="col-sm-7">
-                <input class="form-check-input" type="checkbox" value="1"  name="alergias">
-                    <label class="form-check-label" for="alergias">
-                        Si
-                    </label><br>
-                    <input class="form-check-input" type="checkbox" value="0"  name="alergias">
-                    <label class="form-check-label" for="alergias">
-                        No
-                    </label>
+
+                <!-- VALIDATE CHECK -->
+
+                <?php 
+                    if($row['alergias'] == "1"){
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" checked name="alergias">
+                        <label class="form-check-label" for="alergias">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0"  name="alergias">
+                        <label class="form-check-label" for="alergias">
+                            No
+                        </label>
+                        <?php
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" name="alergias">
+                        <label class="form-check-label" for="alergias">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0" checked name="alergias">
+                        <label class="form-check-label" for="alergias">
+                            No
+                        </label>
+                        <?php
+                    }
+                ?>
+                
+                    
                 </div>
             </div><br>
 
@@ -156,14 +188,35 @@
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('farmacos_actuales')?></label>
                 <div class="col-sm-7">
-                <input class="form-check-input" type="checkbox" value="1"  name="farmacos_actuales">
-                    <label class="form-check-label" for="farmacos_actuales">
-                        Si
-                    </label><br>
-                    <input class="form-check-input" type="checkbox" value="0"  name="farmacos_actuales">
-                    <label class="form-check-label" for="farmacos_actuales">
-                        No
-                    </label>
+
+                <!-- VALIDATE CHECK -->
+
+                <?php 
+                    if($row['farmacos_actuales'] == "1"){
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" checked name="farmacos_actuales">
+                        <label class="form-check-label" for="farmacos_actuales">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0"  name="farmacos_actuales">
+                        <label class="form-check-label" for="farmacos_actuales">
+                            No
+                        </label>
+                        <?php
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" name="farmacos_actuales">
+                        <label class="form-check-label" for="farmacos_actuales">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0" checked name="farmacos_actuales">
+                        <label class="form-check-label" for="farmacos_actuales">
+                            No
+                        </label>
+                        <?php
+                    }
+                ?>
+                
                 </div>
             </div><br>
 
@@ -177,14 +230,35 @@
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Antecedentes_de_procedimientos_quirurjicos_o_estéticos)')?></label>
                 <div class="col-sm-7">
-                <input class="form-check-input" type="checkbox" value="1"  name="procedimientos_quirurjicos" id="quirurjicos1">
-                    <label class="form-check-label" for="procedimientos_quirurjicos">
-                        Si
-                    </label><br>
-                <input class="form-check-input" type="checkbox" value="0"  name="procedimientos_quirurjicos">
-                    <label class="form-check-label" for="procedimientos_quirurjicos">
-                        No
-                    </label>
+
+                <!-- VALIDATE CHECK -->
+
+                <?php 
+                    if($row['procedimientos_quirurjicos'] == "1"){
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" name="procedimientos_quirurjicos" checked>
+                        <label class="form-check-label" for="procedimientos_quirurjicos">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0" name="procedimientos_quirurjicos">
+                        <label class="form-check-label" for="procedimientos_quirurjicos">
+                            No
+                        </label>
+                        <?php
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" name="procedimientos_quirurjicos">
+                        <label class="form-check-label" for="procedimientos_quirurjicos">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0" name="procedimientos_quirurjicos" checked>
+                        <label class="form-check-label" for="procedimientos_quirurjicos">
+                            No
+                        </label>
+                        <?php
+                    }
+                ?>
+                
                 </div>
             </div>
 
@@ -198,44 +272,165 @@
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Antecedentes_personales_no_patologicos')?></label>
                 <div class="col-sm-7">
-                <input class="form-check-input" type="checkbox" value="1"  name="alcohol">
-                    <label class="form-check-label" for="alcohol">
-                        Alcoholismo
-                    </label><br>
-                    <input class="form-check-input" type="checkbox" value="1"  name="tabaco">
-                    <label class="form-check-label" for="tabaco">
-                        Tabaquismo
-                    </label><br>
-                    <input class="form-check-input" type="checkbox" value="1"  name="sustancias">
-                    <label class="form-check-label" for="sustancias">
-                        Toxicomanias
-                    </label>
+
+                <!-- VALIDATE CHECK -->
+                <?php 
+                    if($row['alcohol']==1){
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" checked name="alcohol">
+                        <label class="form-check-label" for="alcohol">
+                            Alcoholismo
+                        </label><br>
+                        <?php 
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" name="alcohol">
+                        <label class="form-check-label" for="alcohol">
+                            Alcoholismo
+                        </label><br>
+                        <?php
+                    }
+                ?>
+                <!-- VALIDATE CHECK -->
+                <?php 
+                    if($row['tabaco']==1){
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" checked name="tabaco">
+                        <label class="form-check-label" for="tabaco">
+                            Tabaquismo
+                        </label><br>
+                        <?php 
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" name="tabaco">
+                        <label class="form-check-label" for="tabaco">
+                            Tabaquismo
+                        </label><br>
+                        <?php
+                    }
+                ?>
+                <!-- VALIDATE CHECK -->
+                <?php 
+                    if($row['sustancias']==1){
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" checked name="sustancias">
+                        <label class="form-check-label" for="sustancias">
+                            Toxicomanias
+                        </label>
+                        <?php 
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" name="sustancias">
+                        <label class="form-check-label" for="sustancias">
+                            Toxicomanias
+                        </label>
+                        <?php
+                    }
+                ?>
                 </div>
             </div><br>
-
-
                 
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Glogau'); ?></label>
-                <div class="col-sm-5">
+                <div class="col-sm-6">
                     <select name="glogau" class="form-control selectboxit" value="<?php echo $row['glogau']; ?>">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('Tipo 1-  Leve (20 a 30 años)'); ?></option>
-                        <option value="1"><?php echo get_phrase('Tipo 2-  Moderado (30 a 40 años)'); ?></option>
-                        <option value="2" data-iconurl=""><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
-                        <option value="3"><?php echo get_phrase('Tipo 4 -  Severo (Arriba de 60 años)'); ?></option>
+                        <?php 
+                            if($row['glogau'] == 0){
+                                ?>
+                                <option value="0" selected="selected"><?php echo get_phrase('Tipo 1 - Leve (20 a 30 años)'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo 2 - Moderado (30 a 40 años)'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo 4 - Severo (Arriba de 60 años)'); ?></option>
+                                <?php
+                            }else if($row['glogau'] == 1){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo 1 - Leve (20 a 30 años)'); ?></option>
+                                <option value="1" selected="selected"><?php echo get_phrase('Tipo 2 - Moderado (30 a 40 años)'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo 4 - Severo (Arriba de 60 años)'); ?></option>
+                                <?php
+                            }else if($row['glogau'] == 2){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo 1 - Leve (20 a 30 años)'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo 2 - Moderado (30 a 40 años)'); ?></option>
+                                <option value="2" selected="selected"><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo 4 - Severo (Arriba de 60 años)'); ?></option>
+                                <?php
+                            }else if($row['glogau'] == 3){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo 1 - Leve (20 a 30 años)'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo 2 - Moderado (30 a 40 años)'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
+                                <option value="3" selected="selected"><?php echo get_phrase('Tipo 4 - Severo (Arriba de 60 años)'); ?></option>
+                                <?php
+                            }
+                            
+                        ?>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Fitzpatrck'); ?></label>
-                <div class="col-sm-5">
+                <div class="col-sm-6">
                     <select name="fitz" class="form-control selectboxit" value="<?php echo $row['fitz']; ?>">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
-                        <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
-                        <option value="2" data-iconurl=""><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
-                        <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
-                        <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
-                        <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                        <?php 
+                            if($row['fitz'] == 0){
+                                ?>
+                                <option value="0" selected="selected"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 1){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1" selected="selected"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 2){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2" selected="selected"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 3){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3" selected="selected"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 4){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4" selected="selected"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 5){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1" selected="selected"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5" selected="selected"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }
+                        ?>
+                        
                     </select>
                 </div>
             </div>
