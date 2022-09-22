@@ -897,6 +897,7 @@ class Crud_model extends CI_Model
 
         function create_project_historia_clinica($project_code = ''){
             $data['project_code']                 = $project_code;
+            $data2['project_code']                = $project_code;
             $data['title']                        = $this->input->post('title');
             $data['nombre_completo']              = $this->input->post('nombre_completo');
             $data['nacimiento']                   = $this->input->post('nacimiento');
@@ -908,28 +909,34 @@ class Crud_model extends CI_Model
             $data['alergias']                     = $this->input->post('alergias');
             $data['farmacos_actuales']            = $this->input->post('farmacos_actuales');
             $data['alcohol']                      = $this->input->post('alcohol');
+            $data['alcohol_notas']                = $this->input->post('alcohol_notas');
             $data['tabaco']                       = $this->input->post('tabaco');
-            $data['sustancias']                   = $this->input->post('sustancias'); 
+            $data['tabaco_notas']                 = $this->input->post('tabaco_notas');
+            $data['sustancias']                   = $this->input->post('sustancias');  
+            $data['sustancias_notas']             = $this->input->post('sustancias_notas');
             $data['glogau']                       = $this->input->post('glogau'); 
             $data['fitz']                         = $this->input->post('fitz'); 
             $data['notas']                        = $this->input->post('notas');
             $data['assigned_staff']               = $this->input->post('assigned_staff');
             $data['timestamp']                    = strtotime(date("d M,Y"));
-
-            //NEW DATA
-            $data['num_expendiente']              = $this->input->post('numero_expediente');
-            $data['creacion']                   = $this->input->post('creacion');
-            $data['edad']                   = $this->input->post('edad');
-            $data['telefono']                   = $this->input->post('telefono');
-            $data['direccion']                   = $this->input->post('direccion');
-            $data['alergias_notas']                   = $this->input->post('alergias_notas');
-            $data['farmacos_actuales_notas']            = $this->input->post('farmacos_actuales_notas');
-            $data['procedimientos_quirurjicos']            = $this->input->post('procedimientos_quirurjicos');
-            $data['quirurjicos_fecha']            = $this->input->post('quirurjicos_fecha');
-            
-            
+            $data2['zona_frontal_cantidad']       = $this->input->post('zona_frontal_cantidad'); 
+            $data2['zona_corrugador_cantidad']    = $this->input->post('zona_corrugador_cantidad');
+            $data2['zona_proceus_cantidad']       = $this->input->post('zona_proceus_cantidad');
+            $data2['zona_ojo_cantidad']           = $this->input->post('zona_ojo_cantidad');
+            $data2['zona_subpalpebral_cantidad']  = $this->input->post('zona_subpalpebral_cantidad');
+            $data2['zona_nariz_cantidad']         = $this->input->post('zona_nariz_cantidad'); 
+            $data2['zona_boca_cantidad']          = $this->input->post('zona_boca_cantidad');
+            $data2['zona_masetero_cantidad']      = $this->input->post('zona_masetero_cantidad');
+            $data2['zona_mentoniano_cantidad']    = $this->input->post('zona_mentoniano_cantidad');
+            $data2['zona_otros_cantidad']         = $this->input->post('zona_otros_cantidad');
+            $data2['timestamp']                   = strtotime(date("d M,Y")); 
+                
             $this->db->insert('project_historia_clinica', $data);
 
+            $id = $this->db->insert_id();
+            $data2['id_historial_clinico'] = $id;
+
+            $this->db->insert('project_toxina_botulinica', $data2);
         }
     
         function update_project_historia_clinica($project_historia_clinica_id = '')
@@ -940,6 +947,8 @@ class Crud_model extends CI_Model
                 $id_botulinica = $row['project_toxina_botulinica_id'];
             }
 
+            // $data['project_code']                 = $project_historia_clinica_id;
+            // $data2['project_code']                = $project_toxina_botulinica_id;
             $data['title']                        = $this->input->post('title');
             $data['nombre_completo']              = $this->input->post('nombre_completo');
             $data['nacimiento']                   = $this->input->post('nacimiento');
@@ -951,24 +960,25 @@ class Crud_model extends CI_Model
             $data['alergias']                     = $this->input->post('alergias');
             $data['farmacos_actuales']            = $this->input->post('farmacos_actuales');
             $data['alcohol']                      = $this->input->post('alcohol');
+            $data['alcohol_notas']                = $this->input->post('alcohol_notas');
             $data['tabaco']                       = $this->input->post('tabaco');
-            $data['sustancias']                   = $this->input->post('sustancias'); 
+            $data['tabaco_notas']                 = $this->input->post('tabaco_notas');
+            $data['sustancias']                   = $this->input->post('sustancias');  
+            $data['sustancias_notas']             = $this->input->post('sustancias_notas');
             $data['glogau']                       = $this->input->post('glogau'); 
             $data['fitz']                         = $this->input->post('fitz'); 
             $data['notas']                        = $this->input->post('notas');
             $data['assigned_staff']               = $this->input->post('assigned_staff');
-            $data['timestamp']                    = strtotime(date("d M,Y"));
-
-            //NEW DATA
-            $data['num_expendiente']              = $this->input->post('numero_expediente');
-            $data['creacion']                   = $this->input->post('creacion');
-            $data['edad']                   = $this->input->post('edad');
-            $data['telefono']                   = $this->input->post('telefono');
-            $data['direccion']                   = $this->input->post('direccion');
-            $data['alergias_notas']                   = $this->input->post('alergias_notas');
-            $data['farmacos_actuales_notas']            = $this->input->post('farmacos_actuales_notas');
-            $data['procedimientos_quirurjicos']            = $this->input->post('procedimientos_quirurjicos');
-            $data['quirurjicos_fecha']            = $this->input->post('quirurjicos_fecha');
+            $data2['zona_frontal_cantidad']       = $this->input->post('zona_frontal_cantidad'); 
+            $data2['zona_corrugador_cantidad']    = $this->input->post('zona_corrugador_cantidad');
+            $data2['zona_proceus_cantidad']       = $this->input->post('zona_proceus_cantidad');
+            $data2['zona_ojo_cantidad']           = $this->input->post('zona_ojo_cantidad');
+            $data2['zona_subpalpebral_cantidad']  = $this->input->post('zona_subpalpebral_cantidad');
+            $data2['zona_nariz_cantidad']         = $this->input->post('zona_nariz_cantidad'); 
+            $data2['zona_boca_cantidad']          = $this->input->post('zona_boca_cantidad');
+            $data2['zona_masetero_cantidad']      = $this->input->post('zona_masetero_cantidad');
+            $data2['zona_mentoniano_cantidad']    = $this->input->post('zona_mentoniano_cantidad');
+            $data2['zona_otros_cantidad']         = $this->input->post('zona_otros_cantidad');
 
             if ($_FILES['userfile']['name'] != '') {
                 $data['file'] = $_FILES['userfile']['name'];
@@ -976,7 +986,8 @@ class Crud_model extends CI_Model
     
             $this->db->where('project_historia_clinica_id', $project_historia_clinica_id);
             $this->db->update('project_historia_clinica', $data);
-            
+            $this->db->where('project_toxina_botulinica_id', $id_botulinica);
+            $this->db->update('project_toxina_botulinica', $data2);
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
     
         }
@@ -989,6 +1000,107 @@ class Crud_model extends CI_Model
             $this->db->delete('project_toxina_botulinica');
         }
     ///
+
+    ///Funcion para manejar los fillers
+    function create_project_filler($project_code = ''){
+        $data['project_code']           = $project_code;
+        $data['title']                  = $this->input->post('title');
+        $data['aplicacion']     	    = $this->input->post('aplicacion'); 
+        $data['valoracion']     	    = $this->input->post('valoracion'); 
+        $data['relleno']         	    = $this->input->post('relleno'); 
+        $data['procedimiento']     	    = $this->input->post('procedimiento'); 
+        $data['lote']            	    = $this->input->post('lote'); 
+        $data['cantidad_producto']     	= $this->input->post('cantidad_producto'); 
+        $data['propuesta']     	        = $this->input->post('propuesta'); 
+        $data['user_type']              = $this->session->userdata('login_type');
+        $data['user_id']                = $this->session->userdata('login_user_id');
+        $data['assigned_staff']         = $this->input->post('assigned_staff');
+        $data['timestamp']              = strtotime(date("d M,Y"));
+
+        $this->db->insert('project_filler', $data);
+    }
+
+    function update_project_filler($project_filler_id = '')
+    {
+        $data['title']                  = $this->input->post('title');
+        $data['aplicacion']     	    = $this->input->post('aplicacion'); 
+        $data['valoracion']     	    = $this->input->post('valoracion'); 
+        $data['relleno']         	    = $this->input->post('relleno'); 
+        $data['procedimiento']     	    = $this->input->post('procedimiento'); 
+        $data['lote']            	    = $this->input->post('lote'); 
+        $data['cantidad_producto']     	= $this->input->post('cantidad_producto'); 
+        $data['propuesta']     	        = $this->input->post('propuesta'); 
+        $data['user_type']              = $this->session->userdata('login_type');
+        $data['user_id']                = $this->session->userdata('login_user_id');
+        $data['assigned_staff']         = $this->input->post('assigned_staff');
+        if ($_FILES['userfile']['name'] != '') {
+            $data['file'] = $_FILES['userfile']['name'];
+        }
+
+        $this->db->where('project_filler_id', $project_filler_id);
+        $this->db->update('project_filler', $data);
+        move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
+
+    }
+
+    function delete_project_filler($project_filler_id = '')
+    {
+        $this->db->where('project_filler_id', $project_filler_id);
+        $this->db->delete('project_filler');
+    }
+
+
+        ///Funcion para manejar las toxinas botulinicas
+        function create_project_toxina_botulinica($project_code = ''){
+            $data['project_code']                 = $project_code;
+            $data['title']                        = $this->input->post('title');
+            $data['id_historial_clinico']         = $this->input->post('id_historial_clinico');
+            $data['zona_frontal_cantidad']        = $this->input->post('zona_frontal_cantidad'); 
+            $data['zona_corrugador_cantidad']     = $this->input->post('zona_corrugador_cantidad');
+            $data['zona_proceus_cantidad']        = $this->input->post('zona_proceus_cantidad');
+            $data['zona_ojo_cantidad']            = $this->input->post('zona_ojo_cantidad');
+            $data['zona_subpalpebral_cantidad']   = $this->input->post('zona_subpalpebral_cantidad');
+            $data['zona_nariz_cantidad']          = $this->input->post('zona_nariz_cantidad'); 
+            $data['zona_boca_cantidad']           = $this->input->post('zona_boca_cantidad');
+            $data['zona_masetero_cantidad']       = $this->input->post('zona_masetero_cantidad');
+            $data['zona_mentoniano_cantidad']     = $this->input->post('zona_mentoniano_cantidad');
+            $data['zona_otros_cantidad']          = $this->input->post('zona_otros_cantidad');
+            $data['assigned_staff']               = $this->input->post('assigned_staff');
+            $data['timestamp']                    = strtotime(date("d M,Y"));
+    
+            $this->db->insert('project_toxina_botulinica', $data);
+        }
+    
+        function update_project_toxina_botulinica($project_toxina_botulinica_id = '')
+        {
+            $data['title']                        = $this->input->post('title');
+            $data['id_historial_clinico']         = $this->input->post('id_historial_clinico');
+            $data['zona_frontal_cantidad']        = $this->input->post('zona_frontal_cantidad'); 
+            $data['zona_corrugador_cantidad']     = $this->input->post('zona_corrugador_cantidad');
+            $data['zona_proceus_cantidad']        = $this->input->post('zona_proceus_cantidad');
+            $data['zona_ojo_cantidad']            = $this->input->post('zona_ojo_cantidad');
+            $data['zona_subpalpebral_cantidad']   = $this->input->post('zona_subpalpebral_cantidad');
+            $data['zona_nariz_cantidad']          = $this->input->post('zona_nariz_cantidad'); 
+            $data['zona_boca_cantidad']           = $this->input->post('zona_boca_cantidad');
+            $data['zona_masetero_cantidad']       = $this->input->post('zona_masetero_cantidad');
+            $data['zona_mentoniano_cantidad']     = $this->input->post('zona_mentoniano_cantidad');
+            $data['zona_otros_cantidad']          = $this->input->post('zona_otros_cantidad');
+            $data['assigned_staff']               = $this->input->post('assigned_staff');
+            if ($_FILES['userfile']['name'] != '') {
+                $data['file'] = $_FILES['userfile']['name'];
+            }
+    
+            $this->db->where('project_toxina_botulinica_id', $project_toxina_botulinica_id);
+            $this->db->update('project_toxina_botulinica', $data);
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/bug_file/' . $_FILES['userfile']['name']);
+    
+        }
+    
+        function delete_project_toxina_botulinica($project_toxina_botulinica_id = '')
+        {
+            $this->db->where('project_toxina_botulinica_id', $project_toxina_botulinica_id);
+            $this->db->delete('project_toxina_botulinica');
+        }
 
     //Nota de evolucion
     function create_project_nota_evolucion($project_code = ''){

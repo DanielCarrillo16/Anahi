@@ -69,7 +69,7 @@ class CI_Calendar {
 	 *
 	 * @var string
 	 */
-	public $start_day = 'sunday';
+	public $start_day = 'Domingo';
 
 	/**
 	 * How to display months
@@ -212,7 +212,7 @@ class CI_Calendar {
 		$total_days = $this->get_total_days($month, $year);
 
 		// Set the starting day of the week
-		$start_days	= array('sunday' => 0, 'monday' => 1, 'tuesday' => 2, 'wednesday' => 3, 'thursday' => 4, 'friday' => 5, 'saturday' => 6);
+		$start_days	= array('Domingo' => 0, 'Lunes' => 1, 'Martes' => 2, 'Miercoles' => 3, 'Jueves' => 4, 'Viernes' => 5, 'Sabado' => 6);
 		$start_day	= isset($start_days[$this->start_day]) ? $start_days[$this->start_day] : 0;
 
 		// Set the starting day number
@@ -386,11 +386,11 @@ class CI_Calendar {
 
 		if ($this->day_type === 'long')
 		{
-			$day_names = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+			$day_names = array('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
 		}
 		elseif ($this->day_type === 'short')
 		{
-			$day_names = array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
+			$day_names = array('Dom', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
 		}
 		else
 		{

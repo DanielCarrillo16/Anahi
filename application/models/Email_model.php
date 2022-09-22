@@ -100,6 +100,7 @@ class Email_model extends CI_Model {
             $email_msg      =   str_replace('[STAFF_PASSWORD]' , $STAFF_PASSWORD , $email_msg);
 
             $email_to       =   $STAFF_EMAIL;
+            var_dump($email_to);
             $this->send_smtp_mail($email_msg , $email_sub , $email_to);
         }
 

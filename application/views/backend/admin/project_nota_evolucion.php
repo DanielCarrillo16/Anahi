@@ -350,7 +350,7 @@
 
                 <div class="panel-title">
 
-                    <i class="entypo-users"></i> Datos personales
+                    <i class="entypo-users"></i> Staff asignado
 
                 </div>
 

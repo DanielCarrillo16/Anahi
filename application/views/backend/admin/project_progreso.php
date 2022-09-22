@@ -107,7 +107,7 @@ foreach ($current_project as $row):
                             <div class="col-sm-6">
                                 <input type="file" 
                                        class=" file2  btn btn-primary"
-                                       multiple="multiple" data-label="<i class='entypo-up'></i> &nbsp;Browse Files" 
+                                       multiple="multiple" data-label="<i class='entypo-up'></i> &nbsp;Seleccionar archivos" 
                                        style="left: 21.25px; top: 3.5px;" name="userfile[]">
 
                             </div>
@@ -116,7 +116,7 @@ foreach ($current_project as $row):
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-6">
                                 <button type="submit" class="btn btn-info"  id="submit-button">
-                                    Upload File</button>
+                                    Subir arvhivo</button>
                                 <span id="preloader-form"></span>
                             </div>
                         </div>

@@ -75,7 +75,7 @@
 			<div class="panel-heading">
 				<div class="panel-title">
 					<i class="entypo-chart-bar"></i>
-					<?php echo get_phrase('income_graph');?> (last 30 days)
+					<?php echo get_phrase('income_graph');?> (Últimos 30 días)
 				</div>
 			</div>
 
@@ -210,7 +210,7 @@ var chart = AmCharts.makeChart("chartdiv",{
 			<div class="panel-heading">
 				<div class="panel-title">
 					<i class="entypo-chart-pie"></i>
-					<?php echo get_phrase('income_expense_comparison');?> (this month)
+					<?php echo get_phrase('income_expense_comparison');?> (Este mes)
 				</div>
 
 			</div>
@@ -228,7 +228,7 @@ var chart = AmCharts.makeChart("chartdiv",{
             <div class="panel-heading">
                 <div class="panel-title">
                     <i class="fa fa-calendar"></i>
-                    <?php echo get_phrase('event_calendar');?> (this month)
+                    <?php echo get_phrase('event_calendar');?> (Este mes)
                 </div>
             </div>
             <div class="panel-body" style="padding:0px;">
