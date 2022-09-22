@@ -5,7 +5,7 @@
             <div class="panel-heading">
                 <div class="panel-title">
                     <i class="entypo-plus-circled"></i>
-                    <?php echo get_phrase('add_project_bug'); ?>
+                    <?php echo get_phrase('Agregar Producto'); ?>
                 </div>
             </div>
             <div class="panel-body">
