@@ -163,41 +163,9 @@ var chart = AmCharts.makeChart("chartdiv",{
 </script>
 
 
-<div class="row">
-	<!-- BAR DIAGRAM STARTS-->
-   	<div class="col-md-12">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<div class="panel-title">
-					<i class="entypo-chart-bar"></i>
-					<?php echo get_phrase('client_payment_bar');?>
-				</div>
-			</div>
-			<div class="panel-body">
-				<div id="bar_chartdiv" style="width: 100%; height: 350px;"></div>
-			</div>
-		</div>
-	</div>
-</div>
-	<!-- BAR DIAGRAM FINISHES-->
 
-<div class="col-md-12">
-	<!-- AM CHART STARTS-->
-   	<div class="col-md-12">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<div class="panel-title">
-					<i class="entypo-chart-pie"></i>
-					<?php echo get_phrase('client_payment_percentage');?>
-				</div>
-			</div>
-			<div class="panel-body">
-				<div id="chartdiv" style="width:100%; height:350px;"></div>
-			</div>
-		</div>
-	</div>
-	<!-- AM CHART FINISHES-->
-</div>
+
+
 
 
 

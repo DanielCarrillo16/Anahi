@@ -64,7 +64,7 @@
 			<div class="icon" style="bottom:40px;"><i class="entypo-megaphone"></i></div>
 			<div class="num" data-start="0" data-end="<?php echo $this->db->get_where('team_task',array('task_status'=>1))->num_rows();?>"
 				data-duration="500" data-delay="0" style="font-weight:200;"></div>
-			<h3 style="font-weight:400; font-size: 14px;"><?php echo get_phrase('pending_team_task');?></h3>
+			<h3 style="font-weight:400; font-size: 14px;"><?php echo get_phrase('Actividades pendientes');?></h3>
 		</div>
 	</div>
 	<!-- charts-->
@@ -75,7 +75,7 @@
 			<div class="panel-heading">
 				<div class="panel-title">
 					<i class="entypo-chart-bar"></i>
-					<?php echo get_phrase('income_graph');?> (last 30 days)
+					<?php echo get_phrase('income_graph');?> (Últimos 30 días)
 				</div>
 			</div>
 
@@ -210,7 +210,7 @@ var chart = AmCharts.makeChart("chartdiv",{
 			<div class="panel-heading">
 				<div class="panel-title">
 					<i class="entypo-chart-pie"></i>
-					<?php echo get_phrase('income_expense_comparison');?> (this month)
+					<?php echo get_phrase('income_expense_comparison');?> (Este mes)
 				</div>
 
 			</div>
@@ -228,7 +228,7 @@ var chart = AmCharts.makeChart("chartdiv",{
             <div class="panel-heading">
                 <div class="panel-title">
                     <i class="fa fa-calendar"></i>
-                    <?php echo get_phrase('event_calendar');?> (this month)
+                    <?php echo get_phrase('event_calendar');?> (Este mes)
                 </div>
             </div>
             <div class="panel-body" style="padding:0px;">

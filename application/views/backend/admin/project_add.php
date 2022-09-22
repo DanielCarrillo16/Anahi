@@ -100,39 +100,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Influencer'); ?></label>
-
-                    <div class="col-sm-5">
-                        <select name="influencer_id" class="select2">
-                            <option><?php echo get_phrase('select_an_influencer'); ?></option>
-                            <?php
-                            $influencers = $this->db->get('influencer')->result_array();
-                            foreach ($influencers as $row):
-                                ?>
-                                <option value="<?php echo $row['influencer_id']; ?>">
-                                    <?php echo $row['name']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('company'); ?></label>
-
-                    <div class="col-sm-5">
-                        <select name="company_id" class="form-control selectboxit" >
-                            <option><?php echo get_phrase('select_company'); ?></option>
-                            <?php
-                            $companies = $this->db->get('company')->result_array();
-                            foreach ($companies as $row):
-                                ?>
-                                <option value="<?php echo $row['company_id']; ?>">
-                                    <?php echo $row['name']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
+                
 
                 <div class="form-group">
                     <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('assign_staff'); ?></label>

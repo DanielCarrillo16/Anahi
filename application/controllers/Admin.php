@@ -293,6 +293,18 @@ class Admin extends CI_Controller
             $page_data['project_code'] = $param2;
         }
 
+        //Aquí se manda a llamar al formulario de fillers
+        else if ($param1 == 'filler') {
+            $page_data['room_page']    = 'project_filler';
+            $page_data['project_code'] = $param2;
+        }
+
+        //Aquí se manda a llamar al formulario de toxina botulinica
+        else if ($param1 == 'toxina_botulinica') {
+            $page_data['room_page']    = 'project_toxina_botulinica';
+            $page_data['project_code'] = $param2;
+        }
+
         // projectroom nota de evolucion
         else if ($param1 == 'nota_evolucion') {
             $page_data['room_page']    = 'project_nota_evolucion';
@@ -494,6 +506,49 @@ class Admin extends CI_Controller
                 $this->crud_model->delete_project_historia_clinica($param2); // param2 = project_bug_id
             }
         }
+
+        //Funcion controladora de fillers
+        function project_filler($param1 = '', $param2 = '', $param3 = '')
+        {
+            if ($this->session->userdata('admin_login') != 1) {
+                $this->session->set_userdata('last_page', current_url());
+                redirect(site_url('login'), 'refresh');
+            }
+            if ($param1 == 'create') {
+                $this->crud_model->create_project_filler($param2); // param2 = project_code
+            } else if ($param1 == 'edit') {
+                $this->crud_model->update_project_filler($param2); // param2 = project_bug_id
+            } else if ($param1 == 'delete') {
+                $this->crud_model->delete_project_filler($param2); // param2 = project_bug_id
+            }
+        }
+        function reload_projectroom_filler($project_code = '')
+    {
+        $page_data['project_code'] = $project_code;
+        $this->load->view('backend/admin/project_filler', $page_data);
+    }
+
+
+    //Funcion controladora de Toxina botulinica
+    function project_toxina_botulinica($param1 = '', $param2 = '', $param3 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            $this->session->set_userdata('last_page', current_url());
+            redirect(site_url('login'), 'refresh');
+        }
+        if ($param1 == 'create') {
+            $this->crud_model->create_project_toxina_botulinica($param2); // param2 = project_code
+        } else if ($param1 == 'edit') {
+            $this->crud_model->update_project_toxina_botulinica($param2); // param2 = project_bug_id
+        } else if ($param1 == 'delete') {
+            $this->crud_model->delete_project_toxina_botulinica($param2); // param2 = project_bug_id
+        }
+    }
+    function reload_projectroom_toxina_botulinica($project_code = '')
+{
+    $page_data['project_code'] = $project_code;
+    $this->load->view('backend/admin/project_toxina_botulinica', $page_data);
+}
 
 
     // projectroom expense

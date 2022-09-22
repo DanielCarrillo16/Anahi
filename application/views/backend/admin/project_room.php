@@ -43,6 +43,25 @@
 			<i class="entypo-chat"></i>
 		</a>
 
+
+		<a style="text-align: left;" href="<?php echo site_url('admin/projectroom/filler/' . $project_code);?>" 
+			class="<?php if ($room_page == 'project_filler') 
+								echo 'btn btn-primary';
+							else 
+								echo 'btn btn-default';?> btn-block btn-icon icon-left">
+			<?php echo get_phrase('Aplicacion de Filler');?>
+			<i class="entypo-chat"></i>
+		</a>
+
+		<a style="text-align: left;" href="<?php echo site_url('admin/projectroom/toxina_botulinica/' . $project_code);?>" 
+			class="<?php if ($room_page == 'project_toxina_botulinica') 
+								echo 'btn btn-primary';
+							else 
+								echo 'btn btn-default';?> btn-block btn-icon icon-left">
+			<?php echo get_phrase('Aplicacion de Botox');?>
+			<i class="entypo-chat"></i>
+		</a>
+
 		<a style="text-align: left;" href="<?php echo site_url('admin/projectroom/nota_evolucion/' . $project_code);?>" 
 			class="<?php if ($room_page == 'project_nota_evolucion') 
 								echo 'btn btn-primary';
@@ -109,15 +128,6 @@
 								echo 'btn btn-default';?> btn-block btn-icon icon-left">
 			<?php echo get_phrase('payment');?>
 			<i class="entypo-credit-card"></i>
-		</a>
-
-		<a style="text-align: left;" href="<?php echo site_url('admin/projectroom/note/' . $project_code);?>" 
-			class="<?php if ($room_page == 'project_note') 
-								echo 'btn btn-primary';
-							else 
-								echo 'btn btn-default';?> btn-block btn-icon icon-left">
-			<?php echo get_phrase('note');?>
-			<i class="entypo-doc-text-inv"></i>
 		</a>
             <a style="text-align: left;" href="<?php echo site_url('admin/projectroom/expense/' . $project_code);?>" 
 			class="<?php if ($room_page == 'project_expense') 

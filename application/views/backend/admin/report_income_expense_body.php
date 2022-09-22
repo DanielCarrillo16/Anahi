@@ -7,7 +7,7 @@
 	<div class="panel-heading">
 		<div class="panel-title">
 			<i class="fa fa-building"></i>
-			<?php echo get_phrase('company_list');?>
+			<?php echo get_phrase('Comparación de ingresos y gastos');?>
 		</div>
 	</div>
 	<div class="panel-body" >
@@ -130,23 +130,7 @@ var chart = AmCharts.makeChart("chartdiv",{
 </script>
 	
 
-<div class="row">
-	<!-- AM CHART STARTS-->
-   	<div class="col-md-12">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<div class="panel-title">
-					<i class="entypo-chart-pie"></i>
-					<?php echo get_phrase('income_expense_percentage');?> 
-				</div>
-			</div>
-			<div class="panel-body">
-				<div id="chartdiv" style="width:100%; height:350px;"></div>
-			</div>
-		</div>
-	</div>
-	<!-- AM CHART FINISHES-->
-</div>
+
 
 
 
