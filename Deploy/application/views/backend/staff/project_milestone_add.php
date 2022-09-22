@@ -30,6 +30,23 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('payment_method');?></label>
+                    
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" name="payment_method" data-validate="required" 
+                        data-message-required="<?php echo get_phrase('value_required');?>" value="" placeholder="e.g. Cheque, cash">
+                    </div>
+                </div>    
+                
+                <div class="form-group">
+                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('description');?></label>
+                    
+                    <div class="col-sm-7">
+                        <textarea name="description" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('status'); ?></label>
 
                     <div class="col-sm-5">
