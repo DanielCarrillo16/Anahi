@@ -17,77 +17,121 @@ foreach ($historia_clinica as $row):
             <blockquote class="blockquote-default">
 
                 <p>
-                    <strong><?php echo $row['title']; ?></strong>
+                    Titulo: <strong><?php echo $row['title']; ?></strong>
                 </p><br>
 
                 <p>
-                    <small><?php echo $row['nombre_completo']; ?></small>
+                    Nombre: <small><?php echo $row['nombre_completo']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['numero_expediente']; ?></small>
+                    Número de expediente: <small><?php echo $row['num_expendiente']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['creacion']; ?></small>
+                    Fecha de creación: <small><?php echo $row['creacion']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['nacimiento']; ?></small>
+                    Fecha de nacimiento: <small><?php echo $row['nacimiento']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['edad']; ?></small>
+                    Edad: <small><?php echo $row['edad']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['sexo']; ?></small>
+                    Sexo: <small><?php if($row['sexo'] == 0){ ?> Hombre <?php } else { ?> Mujer <?php } ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['telefono']; ?></small>
+                    Teléfono: <small><?php echo $row['telefono']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['direccion']; ?></small>
+                    Dirección: <small><?php echo $row['direccion']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['talla']; ?></small>
+                    Talla: <small><?php echo $row['talla']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['peso']; ?></small>
+                    Peso: <small><?php echo $row['peso']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['glucosa']; ?></small>
+                    Glucosa<small><?php echo $row['glucosa']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['motivo_consulta']; ?></small>
+                    Motivo de consulta<small><?php echo $row['motivo_consulta']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['alergias']; ?></small>
+                    Alergias: <small><?php if($row['alergias'] == 0){ ?> No <?php } else { ?> Si <?php } ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['alergias_notas']; ?></small>
+                    Cuales alergias:<small><?php echo $row['alergias_notas']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['farmacos_actuales']; ?></small>
+                    Farmacos actuales: <small><?php if($row['farmacos_actuales'] == 0){ ?> No <?php } else { ?> Si <?php } ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['farmacos_actuales_notas']; ?></small>
+                    Cuales: <small><?php echo $row['farmacos_actuales_notas']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['procedimientos_quirurjicos']; ?></small>
+                    Antecedentes de proc. quirurjicos: <small><?php if($row['procedimientos_quirurjicos'] == 0){ ?> No <?php } else { ?> Si <?php } ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['quirurjicos_fecha']; ?></small>
+                    Fecha de antecedente: <small><?php echo $row['quirurjicos_fecha']; ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['alcohol']; ?></small>
+                    Alcohol: <small><?php if($row['alcohol'] == 0){ ?> No <?php } else { ?> Si <?php } ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['tabaco']; ?></small>
+                    Tabaco: <small><?php if($row['tabaco'] == 0){ ?> No <?php } else { ?> Si <?php } ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['sustancias']; ?></small>
+                    Sustancias: <small><?php if($row['sustancias'] == 0){ ?> No <?php } else { ?> Si <?php } ?></small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['glogau']; ?></small>
+                    Glogau: <small><?php 
+                        if($row['glogau'] == 0){ 
+                            ?>
+                            Tipo 1 - Leve (20 a 30 años)
+                            <?php 
+                        } else if($row['glogau'] == 1) { 
+                            ?>
+                            Tipo 2 - Moderado (30 a 40 años)
+                            <?php
+                        } else if($row['glogau'] == 2) { 
+                            ?>
+                            Tipo 3 - Avanzado (Arriba de 50 años)
+                            <?php
+                        } else if($row['glogau'] == 3) { 
+                            ?>
+                            Tipo 4 - Severo (Arriba de 60 años)
+                            <?php
+                        } ?>
+                    </small>
                 </p><br>
                 <p>
-                    <small><?php echo $row['fitz']; ?></small>
+                    Fitzpatrck: <small><?php 
+                        if($row['fitz'] == 0){ 
+                            ?>
+                            Tipo I-  Albina, caucásica
+                            <?php 
+                        } else if($row['fitz'] == 1) { 
+                            ?>
+                            Tipo II-  Blanca, Clara
+                            <?php
+                        } else if($row['fitz'] == 2) { 
+                            ?>
+                            Tipo III - Piel europea oscura
+                            <?php
+                        } else if($row['fitz'] == 3) { 
+                            ?>
+                            Tipo IV -  Piel moreno clara
+                            <?php
+                        } else if($row['fitz'] == 4) { 
+                            ?>
+                            Tipo V -  Piel moreno oscura
+                            <?php
+                        } else if($row['fitz'] == 5) { 
+                            ?>
+                            Tipo VI -  Piel negra
+                            <?php
+                        } ?>
+                    </small>
                 </p><br>
 
                 &nbsp;
