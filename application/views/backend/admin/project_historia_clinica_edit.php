@@ -1,7 +1,7 @@
 <?php 
 
     $edit = $this->db->get_where('project_historia_clinica' , array('project_historia_clinica_id' => $param2))->result_array();
-
+    
     foreach ($edit as $row):
 
 ?>
@@ -26,14 +26,6 @@
 
             <div class="panel-body">
 
-                <?php 
-
-                    $edit_botulinica = $this->db->get_where('project_toxina_botulinica' , array('id_historial_clinico' => $param2))->result_array();
-
-                    foreach ($edit_botulinica as $row2):
-
-                ?>
-
 
 
                 <?php echo form_open(site_url('admin/project_historia_clinica/edit/' . $param2), array(
@@ -42,215 +34,404 @@
 
                 
 
-                <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('title'); ?></label>
+
+                    <div class="form-group">
+                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Título'); ?>*</label>
+
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" name="title" value="<?php echo $row['title']; ?>" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
+                        <input type="text" class="form-control" name="title" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['title']; ?>" autofocus>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('nombre_completo'); ?></label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" name="nombre_completo" value="<?php echo $row['nombre_completo']; ?>" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
-                    </div>
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Nombre_completo')?>*</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="nombre_completo" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['nombre_completo']; ?>" autofocus>
                 </div>
+            </div>
+        
 
-                <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('nacimiento'); ?></label>
-                    <div class="col-sm-7">
-                        <input type="date" class="form-control" name="nacimiento" value="<?php echo $row['nacimiento']; ?>" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
-                    </div>
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Número_de_expediente')?>*</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="numero_expediente" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['num_expendiente']; ?>" autofocus>
                 </div>
+            </div>
 
-                <div class="form-group">
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Fecha_de_creacion')?>*</label>
+                <div class="col-sm-7">
+                <input type="date" class="form-control" name="creacion" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['creacion']; ?>" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Fecha_de_nacimiento')?>*</label>
+                <div class="col-sm-7">
+                <input type="date" class="form-control" name="nacimiento" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['nacimiento']; ?>" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('edad')?>*</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="edad" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['edad']; ?>" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('sexo'); ?>*</label>
                 <div class="col-sm-5">
                     <select name="sexo" class="form-control selectboxit" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>">
-                        <option value="" disabled selected><?php echo $row['sexo']; ?></option>
-                        <option value="0" data-iconurl=""><?php echo get_phrase('masculino'); ?></option>
-                        <option value="1"><?php echo get_phrase('femenino'); ?></option>
+                        <?php 
+                            if($row['sexo'] == 0){
+                                ?>
+                                <option value="0" selected="selected"><?php echo get_phrase('masculino'); ?></option>
+                                <option value="1"><?php echo get_phrase('femenino'); ?></option>
+                                <?php
+                            }else{
+                                ?>
+                                <option value="0"><?php echo get_phrase('masculino'); ?></option>
+                                <option value="1" selected="selected"><?php echo get_phrase('femenino'); ?></option>
+                                <?php
+                            }
+                        ?>
+                        
                     </select>
                 </div>
             </div>
 
             <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Talla'); ?></label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" name="talla" value="<?php echo $row['talla']; ?>" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
-                    </div>
-            </div>
-
-            <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('peso'); ?></label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" name="peso" value="<?php echo $row['peso']; ?>" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
-                    </div>
-            </div>
-
-            <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('glucosa'); ?></label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" name="glucosa" value="<?php echo $row['glucosa']; ?>" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
-                    </div>
-            </div>
-
-            <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('motivo_consulta'); ?></label>
-                    <div class="col-sm-7">
-                    <input type="text" class="form-control" name="motivo_consulta" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['motivo_consulta']; ?>" autofocus>
-                    </div>
-            </div>
-
-            <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('alergias'); ?></label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" name="alergias" value="<?php echo $row['alergias']; ?>" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
-                    </div>
-            </div>
-
-            <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('farmacos_actuales'); ?></label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" name="farmacos_actuales" value="<?php echo $row['farmacos_actuales']; ?>" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="" autofocus>
-                    </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('alcohol'); ?></label>
-                <div class="col-sm-5">
-                    <select name="alcohol" class="form-control selectboxit" value="<?php echo $row['alcohol']; ?>">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('no'); ?></option>
-                        <option value="1"><?php echo get_phrase('si'); ?></option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Desde_cuando / Notas')?>*</label>
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Número_de_teléfono')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="alcohol_notas" value="<?php echo $row['alcohol_notas']; ?>" autofocus>
+                    <input type="text" class="form-control" name="telefono" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['telefono']; ?>" autofocus>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('tabaco'); ?></label>
-                <div class="col-sm-5">
-                    <select name="tabaco" class="form-control selectboxit" value="<?php echo $row['tabaco']; ?>">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('no'); ?></option>
-                        <option value="1"><?php echo get_phrase('si'); ?></option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Desde_cuando / Notas')?>*</label>
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('direccion')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="tabaco_notas" value="<?php echo $row['tabaco_notas']; ?>" autofocus>
+                    <input type="text" class="form-control" name="direccion" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['direccion']; ?>" autofocus>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('sustancias'); ?></label>
-                <div class="col-sm-5">
-                    <select name="sustancias" class="form-control selectboxit" value="<?php echo $row['sustancias']; ?>">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('no'); ?></option>
-                        <option value="1"><?php echo get_phrase('si'); ?></option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Desde_cuando / Notas')?>*</label>
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Talla')?>*</label>
                 <div class="col-sm-7">
-                <input type="text" class="form-control" name="sustancias_notas" value="<?php echo $row['sustancias_notas']; ?>" autofocus>
+                <input type="text" class="form-control" name="talla" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['talla']; ?>" autofocus>
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Peso_(Kg)')?>*</label>
+                <div class="col-sm-7">
+                <input type="text" class="form-control" name="peso" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['peso']; ?>" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Glucosa')?>*</label>
+                <div class="col-sm-7">
+                <input type="text" class="form-control" name="glucosa" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['glucosa']; ?>" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Motivo_de_consulta')?>*</label>
+                <div class="col-sm-7">
+                <input type="text" class="form-control" name="motivo_consulta" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['motivo_consulta']; ?>" autofocus>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Alergias')?></label>
+                <div class="col-sm-7">
+
+                <!-- VALIDATE CHECK -->
+
+                <?php 
+                    if($row['alergias'] == "1"){
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" checked name="alergias">
+                        <label class="form-check-label" for="alergias">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0"  name="alergias">
+                        <label class="form-check-label" for="alergias">
+                            No
+                        </label>
+                        <?php
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" name="alergias">
+                        <label class="form-check-label" for="alergias">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0" checked name="alergias">
+                        <label class="form-check-label" for="alergias">
+                            No
+                        </label>
+                        <?php
+                    }
+                ?>
+                
+                    
+                </div>
+            </div><br>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Cuales(alergias)')?></label>
+                <div class="col-sm-7">
+                <input type="text" class="form-control" name="alergias_notas"  value="<?php echo $row['alergias_notas']; ?>" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('farmacos_actuales')?></label>
+                <div class="col-sm-7">
+
+                <!-- VALIDATE CHECK -->
+
+                <?php 
+                    if($row['farmacos_actuales'] == "1"){
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" checked name="farmacos_actuales">
+                        <label class="form-check-label" for="farmacos_actuales">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0"  name="farmacos_actuales">
+                        <label class="form-check-label" for="farmacos_actuales">
+                            No
+                        </label>
+                        <?php
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" name="farmacos_actuales">
+                        <label class="form-check-label" for="farmacos_actuales">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0" checked name="farmacos_actuales">
+                        <label class="form-check-label" for="farmacos_actuales">
+                            No
+                        </label>
+                        <?php
+                    }
+                ?>
+                
+                </div>
+            </div><br>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Cuales(farmacos_actuales)')?></label>
+                <div class="col-sm-7">
+                <input type="text" class="form-control" name="farmacos_actuales_notas"  value="<?php echo $row['farmacos_actuales_notas']; ?>" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Antecedentes_de_procedimientos_quirurjicos_o_estéticos)')?></label>
+                <div class="col-sm-7">
+
+                <!-- VALIDATE CHECK -->
+
+                <?php 
+                    if($row['procedimientos_quirurjicos'] == "1"){
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" name="procedimientos_quirurjicos" checked>
+                        <label class="form-check-label" for="procedimientos_quirurjicos">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0" name="procedimientos_quirurjicos">
+                        <label class="form-check-label" for="procedimientos_quirurjicos">
+                            No
+                        </label>
+                        <?php
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="radio" value="1" name="procedimientos_quirurjicos">
+                        <label class="form-check-label" for="procedimientos_quirurjicos">
+                            Si
+                        </label><br>
+                        <input class="form-check-input" type="radio" value="0" name="procedimientos_quirurjicos" checked>
+                        <label class="form-check-label" for="procedimientos_quirurjicos">
+                            No
+                        </label>
+                        <?php
+                    }
+                ?>
+                
+                </div>
+            </div>
+
+            <div class="form-group" id="quirurjicos">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Cuando')?>*</label>
+                <div class="col-sm-7">
+                <input type="date" class="form-control" name="quirurjicos_fecha" data-validate="required" data-message-required="<?php echo get_phrase('value_required'); ?>" value="<?php echo $row['quirurjicos_fecha']; ?>" autofocus>
+                </div>
+            </div><br>
+
+            <div class="form-group">
+                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Antecedentes_personales_no_patologicos')?></label>
+                <div class="col-sm-7">
+
+                <!-- VALIDATE CHECK -->
+                <?php 
+                    if($row['alcohol']==1){
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" checked name="alcohol">
+                        <label class="form-check-label" for="alcohol">
+                            Alcoholismo
+                        </label><br>
+                        <?php 
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" name="alcohol">
+                        <label class="form-check-label" for="alcohol">
+                            Alcoholismo
+                        </label><br>
+                        <?php
+                    }
+                ?>
+                <!-- VALIDATE CHECK -->
+                <?php 
+                    if($row['tabaco']==1){
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" checked name="tabaco">
+                        <label class="form-check-label" for="tabaco">
+                            Tabaquismo
+                        </label><br>
+                        <?php 
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" name="tabaco">
+                        <label class="form-check-label" for="tabaco">
+                            Tabaquismo
+                        </label><br>
+                        <?php
+                    }
+                ?>
+                <!-- VALIDATE CHECK -->
+                <?php 
+                    if($row['sustancias']==1){
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" checked name="sustancias">
+                        <label class="form-check-label" for="sustancias">
+                            Toxicomanias
+                        </label>
+                        <?php 
+                    }else{
+                        ?>
+                        <input class="form-check-input" type="checkbox" value="1" name="sustancias">
+                        <label class="form-check-label" for="sustancias">
+                            Toxicomanias
+                        </label>
+                        <?php
+                    }
+                ?>
+                </div>
+            </div><br>
+                
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Glogau'); ?></label>
-                <div class="col-sm-5">
+                <div class="col-sm-6">
                     <select name="glogau" class="form-control selectboxit" value="<?php echo $row['glogau']; ?>">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('tipo_1'); ?></option>
-                        <option value="1"><?php echo get_phrase('tipo_2'); ?></option>
-                        <option value="2" data-iconurl=""><?php echo get_phrase('tipo_3'); ?></option>
-                        <option value="3"><?php echo get_phrase('tipo_4'); ?></option>
+                        <?php 
+                            if($row['glogau'] == 0){
+                                ?>
+                                <option value="0" selected="selected"><?php echo get_phrase('Tipo 1 - Leve (20 a 30 años)'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo 2 - Moderado (30 a 40 años)'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo 4 - Severo (Arriba de 60 años)'); ?></option>
+                                <?php
+                            }else if($row['glogau'] == 1){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo 1 - Leve (20 a 30 años)'); ?></option>
+                                <option value="1" selected="selected"><?php echo get_phrase('Tipo 2 - Moderado (30 a 40 años)'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo 4 - Severo (Arriba de 60 años)'); ?></option>
+                                <?php
+                            }else if($row['glogau'] == 2){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo 1 - Leve (20 a 30 años)'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo 2 - Moderado (30 a 40 años)'); ?></option>
+                                <option value="2" selected="selected"><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo 4 - Severo (Arriba de 60 años)'); ?></option>
+                                <?php
+                            }else if($row['glogau'] == 3){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo 1 - Leve (20 a 30 años)'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo 2 - Moderado (30 a 40 años)'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo 3 - Avanzado (Arriba de 50 años)'); ?></option>
+                                <option value="3" selected="selected"><?php echo get_phrase('Tipo 4 - Severo (Arriba de 60 años)'); ?></option>
+                                <?php
+                            }
+                            
+                        ?>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Fitzpatrck'); ?></label>
-                <div class="col-sm-5">
+                <div class="col-sm-6">
                     <select name="fitz" class="form-control selectboxit" value="<?php echo $row['fitz']; ?>">
-                        <option value="0" data-iconurl=""><?php echo get_phrase('tipo_1'); ?></option>
-                        <option value="1"><?php echo get_phrase('tipo_2'); ?></option>
-                        <option value="2" data-iconurl=""><?php echo get_phrase('tipo_3'); ?></option>
-                        <option value="3"><?php echo get_phrase('tipo_4'); ?></option>
-                        <option value="4"><?php echo get_phrase('tipo_5'); ?></option>
-                        <option value="5"><?php echo get_phrase('tipo_6'); ?></option>
+                        <?php 
+                            if($row['fitz'] == 0){
+                                ?>
+                                <option value="0" selected="selected"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 1){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1" selected="selected"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 2){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2" selected="selected"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 3){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3" selected="selected"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 4){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4" selected="selected"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }else if($row['fitz'] == 5){
+                                ?>
+                                <option value="0"><?php echo get_phrase('Tipo I-  Albina, caucásica'); ?></option>
+                                <option value="1" selected="selected"><?php echo get_phrase('Tipo II-  Blanca, Clara'); ?></option>
+                                <option value="2"><?php echo get_phrase('Tipo III - Piel europea oscura'); ?></option>
+                                <option value="3"><?php echo get_phrase('Tipo IV -  Piel moreno clara'); ?></option>
+                                <option value="4"><?php echo get_phrase('Tipo V -  Piel moreno oscura'); ?></option>
+                                <option value="5" selected="selected"><?php echo get_phrase('Tipo VI -  Piel negra'); ?></option>
+                                <?php
+                            }
+                        ?>
+                        
                     </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona frontal')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_frontal_cantidad" value="<?php echo $row2['zona_frontal_cantidad']; ?>" autofocus>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona corrugador')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_corrugador_cantidad" value="<?php echo $row2['zona_corrugador_cantidad']; ?>" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona proceus')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_proceus_cantidad" value="<?php echo $row2['zona_proceus_cantidad']; ?>" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona ojo')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_ojo_cantidad" value="<?php echo $row2['zona_ojo_cantidad']; ?>" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona subpalpebral')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_subpalpebral_cantidad" value="<?php echo $row2['zona_subpalpebral_cantidad']; ?>" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona nariz')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_nariz_cantidad" value="<?php echo $row2['zona_nariz_cantidad']; ?>" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona boca')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_boca_cantidad" value="<?php echo $row2['zona_boca_cantidad']; ?>" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona masetero')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_masetero_cantidad" value="<?php echo $row2['zona_masetero_cantidad']; ?>" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona mentoniano')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_mentoniano_cantidad" value="<?php echo $row2['zona_mentoniano_cantidad']; ?>" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Zona otros')?>*</label>
-                <div class="col-sm-7">
-                <input type="text" class="form-control" name="zona_otros_cantidad" value="<?php echo $row2['zona_otros_cantidad']; ?>" autofocus>
                 </div>
             </div>
 
@@ -258,7 +439,7 @@
             <div class="form-group">
                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('Notas_agregadas')?></label>
                 <div class="col-sm-7">
-                <textarea class="form-control" name="notas" value="<?php echo $row['notas']; ?>"></textarea>
+                <textarea class="form-control" name="notas"><?php echo $row['notas']; ?></textarea>
                 </div>
             </div>
 
@@ -346,9 +527,6 @@
 
 </script>
 
-
-
-<?php endforeach;?>
 
 <?php endforeach;?>
 

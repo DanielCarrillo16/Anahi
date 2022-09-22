@@ -143,7 +143,7 @@
 
                                 <!-- EDITING LINK -->
                                 <li>
-                                    <a onclick="showAjaxModal('<?php echo site_url('modal/popup/client_edit/' . $row['client_id']); ?>');">
+                                    <a href="#" onclick="showAjaxModal('<?php echo site_url('modal/popup/client_edit/' . $row['client_id']); ?>');">
                                         <i class="entypo-pencil"></i>
                                         <?php echo get_phrase('edit'); ?>
                                     </a>
