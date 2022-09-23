@@ -129,7 +129,7 @@
                             </a>-->
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle " data-toggle="dropdown">
-                                Action <span class="caret"></span>
+                                Acción <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu dropdown-default pull-right" role="menu">
 

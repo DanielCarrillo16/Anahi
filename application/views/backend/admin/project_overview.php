@@ -190,7 +190,7 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-md-8 panel-title">
-                        <i class="entypo-users"></i> Assigned staff
+                        <i class="entypo-users"></i> Staff Asignado
                     </div>
                     <div class="col-md-4 panel-options">
                 <?php if ($number_of_staffs > 0): ?>

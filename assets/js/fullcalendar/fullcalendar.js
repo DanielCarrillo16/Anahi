@@ -62,18 +62,18 @@ var defaults = {
 	isRTL: false,
 	firstDay: 0,
 	monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-	monthNamesShort: ['Ene','Feb','Mar','Abr','Mayo','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-	dayNames: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'],
-	dayNamesShort: ['Dom','Mon','Tue','Wed','Thu','Fri','Sat'],
+	monthNamesShort: ['Ene','Feb','Mar','Abr','Mayo','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+	dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+	dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
 	buttonText: {
 		prev: "<span class='fc-text-arrow'>&lsaquo;</span>",
 		next: "<span class='fc-text-arrow'>&rsaquo;</span>",
 		prevYear: "<span class='fc-text-arrow'>&laquo;</span>",
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
-		today: 'hoy',
-		month: 'mes',
-		week: 'semana',
-		day: 'dia'
+		today: 'Hoy',
+		month: 'Mes',
+		week: 'Semana',
+		day: 'Día'
 	},
 	
 	// jquery-ui theming

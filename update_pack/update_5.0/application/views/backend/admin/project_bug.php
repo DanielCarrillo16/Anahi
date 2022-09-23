@@ -386,7 +386,7 @@ bugs
 
                 <div class="panel-title">
 
-                    <i class="entypo-users"></i> Assigned staff
+                    <i class="entypo-users"></i> Staff Asignado
 
                 </div>
 

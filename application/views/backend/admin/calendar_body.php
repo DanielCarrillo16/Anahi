@@ -56,6 +56,7 @@ foreach ($events as $row):
 
             //alert('Clicked on: ' + date);
             date = $.fullCalendar.formatDate(date, "dd-MM-yyyy");
+            window.scroll(0, 0);
                     showAjaxModal('<?php echo site_url('modal/popup/calendar_event_add/'); ?>' + date);
                     //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
 
@@ -68,6 +69,8 @@ foreach ($events as $row):
                     eventClick: function(calEvent, jsEvent, view) {
 
                     //alert('Event: ' + calEvent.id);
+                    window.scroll(0, 0);
+
                     var event_id = calEvent.id;
                             showAjaxModal('<?php echo site_url('modal/popup/calendar_event_edit/'); ?>' + event_id);
                             //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
