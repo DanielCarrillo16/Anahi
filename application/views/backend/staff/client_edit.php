@@ -57,64 +57,6 @@ foreach ($edit_data as $row):
 						</div> 
 					</div>
 					
-					
-					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-4 control-label"><?php echo get_phrase('website');?></label>
-                        
-						<div class="col-sm-7">
-                      	<div class="input-group ">
-								<span class="input-group-addon"><i class="entypo-network"></i></span>
-								<input type="text" class="form-control" name="website" value="<?php echo $row['website'];?>" >
-                         </div>
-						</div> 
-					</div>
-					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-4 control-label"><?php echo get_phrase('skype_id');?></label>
-                        
-						<div class="col-sm-7">
-                      	<div class="input-group ">
-								<span class="input-group-addon"><i class="entypo-skype"></i></span>
-								<input type="text" class="form-control" name="skype_id" value="<?php echo $row['skype_id'];?>" >
-                         </div>
-						</div> 
-					</div>
-					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-4 control-label"><?php echo get_phrase('facebook_profile_link');?></label>
-                        
-						<div class="col-sm-7">
-                      	<div class="input-group ">
-								<span class="input-group-addon"><i class="entypo-facebook-squared"></i></span>
-								<input type="text" class="form-control" name="facebook_profile_link" value="<?php echo $row['facebook_profile_link'];?>" >
-                         </div>
-						</div> 
-					</div>
-					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-4 control-label"><?php echo get_phrase('linkedin_profile_link');?></label>
-                        
-						<div class="col-sm-7">
-                      	<div class="input-group ">
-								<span class="input-group-addon"><i class="entypo-linkedin"></i></span>
-								<input type="text" class="form-control" name="linkedin_profile_link" value="<?php echo $row['linkedin_profile_link'];?>" >
-                         </div>
-						</div> 
-					</div>
-					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-4 control-label"><?php echo get_phrase('twitter_profile_link');?></label>
-                        
-						<div class="col-sm-7">
-                      	<div class="input-group ">
-								<span class="input-group-addon"><i class="entypo-twitter"></i></span>
-								<input type="text" class="form-control" name="twitter_profile_link" value="<?php echo $row['twitter_profile_link'];?>" >
-                         </div>
-						</div> 
-					</div>
-					
-					
 					<div class="form-group">
 						<label for="field-2" class="col-sm-4 control-label"><?php echo get_phrase('short_note');?></label>
                         

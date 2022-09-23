@@ -3,7 +3,7 @@
 
     <div class="col-md-12">
         <div class="calendar-env">
-            <a href="javascript:;" onclick=" showAjaxModal('<?php echo site_url('modal/popup/calendar_event_add/' . $date);?>');" 
+            <a href="#" onclick=" showAjaxModal('<?php echo site_url('modal/popup/calendar_event_add/' . $date);?>');" 
                class="btn btn-primary pull-right btn-adding">
                 <i class="entypo-plus-circled"></i>
                 <?php echo get_phrase('add_event'); ?>

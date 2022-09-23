@@ -198,7 +198,7 @@
         <div class="panel panel-primary" data-collapsed="0">
             <div class="panel-heading">
                 <div class="panel-title">
-                    <i class="entypo-users"></i> Assigned staff
+                    <i class="entypo-users"></i> Staff Asignado
                 </div>
             </div>
             <div class="panel-body">

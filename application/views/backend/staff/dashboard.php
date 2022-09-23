@@ -14,7 +14,7 @@
 	<div class="col-md-6" style="text-align:center;">
 
     	<?php if ($this->crud_model->staff_permission(1)):?>
-	        <a type="button" class="btn btn-default btn-icon icon-left col-md-5 col-xs-12"  style="margin:5px;"
+	        <a type="button" class="btn btn-default btn-icon icon-left col-md-8 col-xs-12"  style="margin:5px;"
 				href="<?php echo site_url('staff/project');?>">
 	        		<?php echo get_phrase('assigned_projects');?>
 	        			<i class="entypo-paper-plane"></i>
@@ -22,7 +22,7 @@
 	    <?php endif;?>
 
     	<?php if ($this->crud_model->staff_permission(2)):?>
-	        <a type="button" class="btn btn-default btn-icon icon-left col-md-5 col-xs-12"  style="margin:5px;"
+	        <a type="button" class="btn btn-default btn-icon icon-left col-md-8 col-xs-12"  style="margin:5px;"
 				href="<?php echo site_url('staff/project');?>">
 	        		<?php echo get_phrase('manage_projects');?>
 	        			<i class="entypo-paper-plane"></i>
@@ -30,7 +30,7 @@
 	    <?php endif;?>
 
     	<?php if ($this->crud_model->staff_permission(3)):?>
-	        <a type="button" class="btn btn-default btn-icon icon-left col-md-5 col-xs-12"  style="margin:5px;"
+	        <a type="button" class="btn btn-default btn-icon icon-left col-md-8 col-xs-12"  style="margin:5px;"
 				href="<?php echo site_url('staff/client');?>">
 	        		<?php echo get_phrase('manage_client');?>
 	        			<i class="entypo-users"></i>
@@ -38,7 +38,7 @@
 	    <?php endif;?>
 
     	<?php if ($this->crud_model->staff_permission(4)):?>
-	        <a type="button" class="btn btn-default btn-icon icon-left col-md-5 col-xs-12"  style="margin:5px;"
+	        <a type="button" class="btn btn-default btn-icon icon-left col-md-8 col-xs-12"  style="margin:5px;"
 				href="<?php echo site_url('staff/staff');?>">
 	        		<?php echo get_phrase('manage_staffs');?>
 	        			<i class="entypo-user"></i>
@@ -46,7 +46,7 @@
 	    <?php endif;?>
 
     	<?php if ($this->crud_model->staff_permission(6)):?>
-	        <a type="button" class="btn btn-default btn-icon icon-left col-md-5 col-xs-12"  style="margin:5px;"
+	        <a type="button" class="btn btn-default btn-icon icon-left col-md-8 col-xs-12"  style="margin:5px;"
 				href="<?php echo site_url('staff/support_ticket');?>">
 	        		<?php echo get_phrase('assigned_support_tickets');?>
 	        			<i class="entypo-lifebuoy"></i>
