@@ -950,5 +950,13 @@
     "tipo_i-_albina,_caucásica": "Tipo i- albina, caucásica",
     "tipo_ii-_blanca,_clara": "Tipo ii- blanca, clara",
     "prueba": "Prueba",
-    "jjjj": "Jjjj"
+    "jjjj": "Jjjj",
+    "type_something": "Type something",
+    "smtp_timeout": "Smtp timeout",
+    "charter_set": "Charter set",
+    "new_line": "New line",
+    "mail_type": "Mail type",
+    "edit_servicios": "Edit servicios",
+    "precio": "Precio",
+    "add_servicios": "Add servicios"
 }

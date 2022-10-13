@@ -1,3 +1,5 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <?php $system_currency = $this->db->get_where('settings' , array('type' =>'system_currency_id'))->row()->description; ?>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -114,7 +116,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-5">
-                        <button type="submit" class="btn btn-info"><?php echo get_phrase('save'); ?></button>
+                        <button type="submit" class="btn btn-info">Guardar</button>
                     </div>
                 </div>
 
@@ -187,6 +189,79 @@
 
         </div>
 
+
+    <div class="panel panel-primary" data-collapsed="0">
+        <div class="panel-heading">
+            <div class="panel-title">
+                Configuración de Twilio
+            </div>
+        </div>
+            
+        <!-- WHATSAPP CONFIGURATION -->
+        <div class="panel-body">
+            <?php echo form_open(site_url('admin/system_settings/twilio_update'), array('class' => 'form-horizontal form-groups-bordered validate', 'target' => '_top'));
+            ?>
+
+            <div class="form-group">
+                <label  class="col-sm-3 control-label">ID Cuenta Twilio</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="twilio_id"
+                        value="<?php echo $this->db->get_where('settings', array('type' => 'twilio_id'))->row()->description; ?>">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label  class="col-sm-3 control-label">Token de Twilio</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="twilio_token"
+                        value="<?php echo $this->db->get_where('settings', array('type' => 'twilio_token'))->row()->description; ?>">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Mensaje de cita</label>
+                <div class="col-sm-7">
+                    <textarea class="form-control" name="whatsapp_message"><?php echo $this->db->get_where('settings', array('type' => 'whatsapp_message'))->row()->description;?></textarea>
+                    <label class="col-sm-10 control-label">No eliminar ni modificar las palabras que comiencen con '$'</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label  class="col-sm-3 control-label">Dias de anticipación para cita</label>
+                <div class="col-sm-7">
+                    <select name="days" class="selectboxit">
+                        <?php $days = $this->db->get_where('settings', array('type' => 'days'))->row()->description; ?>
+                        <option value="1" <?php if ($days == '1') echo 'selected'; ?>>1</option>
+                        <option value="2" <?php if ($days == '2') echo 'selected'; ?>>2</option>
+                        <option value="3" <?php if ($days == '3') echo 'selected'; ?>>3</option>
+                        <option value="4" <?php if ($days == '4') echo 'selected'; ?>>4</option>
+                        <option value="5" <?php if ($days == '5') echo 'selected'; ?>>5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-5">
+                    <button type="submit" class="btn btn-info">Guardar</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label  class="col-sm-3 control-label">Mandar mensaje de prueba</label>
+                <div class="col-sm-5">
+                    <input type="number" class="form-control" name="test_number" id="test_number" placeholder="Número de telefono" value="">
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" onclick="send_message()" class="btn btn-success">Test</button>
+                </div>
+            </div>
+
+            <?php echo form_close(); ?>
+            <hr />
+
+        </div>
+    </div>
+
       <!-- Updater -->
       <div class="panel panel-primary" data-collapsed="0">
 
@@ -222,3 +297,26 @@
     </div>
 
 </div>
+
+<script>
+    function send_message() {
+
+        const phone_number = document.getElementById('test_number').value;
+        if(phone_number == ""){
+            document.getElementById("test_number").focus();
+        }
+        else{
+            $.ajax({
+                url: '<?php echo site_url('admin/test_send_message_base/');?>'+phone_number,
+                success: function(response)
+                {
+                    if(response == "Entregado"){
+                        swal("Entregado", "El mensaje ha sido entregado correctamente", "success");
+                    }else{
+                        swal("Error", "No se ha enviado el mensaje", "error");
+                    }
+                }
+            });
+        }
+    }
+</script>

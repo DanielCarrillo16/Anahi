@@ -60,7 +60,7 @@
                     <div class="col-sm-7">
                         <div class="input-group ">
                             <span class="input-group-addon"><i class="entypo-phone"></i></span>
-                            <input type="text" class="form-control" name="phone" value=""  >
+                            <input type="text" class="form-control" name="phone" value="" autofocus required>
                         </div>
                     </div>
                 </div>
