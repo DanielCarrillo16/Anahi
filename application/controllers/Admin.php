@@ -1318,6 +1318,11 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('flash_message', get_phrase('settings_updated'));
             redirect(site_url('admin/system_settings'), 'refresh');
         }
+        if ($param1 == 'twilio_update') {
+            $this->crud_model->update_twilio_settings();
+            $this->session->set_flashdata('flash_message', get_phrase('settings_updated'));
+            redirect(site_url('admin/system_settings'), 'refresh');
+        }
         if ($param1 == 'upload_logo') {
             move_uploaded_file($_FILES['light_logo']['tmp_name'], 'assets/logo.png');
             move_uploaded_file($_FILES['dark_logo']['tmp_name'], 'assets/dark-logo.png');
@@ -1336,6 +1341,105 @@ class Admin extends CI_Controller
         $page_data['page_title'] = get_phrase('system_settings');
         $page_data['settings']   = $this->db->get('settings')->result_array();
         $this->load->view('backend/index', $page_data);
+    }
+
+    //REVISA DIARIAMENTE SI HAY UNA CITA CERCANA
+    //CRON JOB
+
+    function check_date(){
+        $tasks = $this->crud_model->get_team_tasks();
+        
+        $days = $this->db->get_where('settings', array('type' => 'days'))->row()->description;
+        
+        foreach($tasks->result() as $row){
+            $timestamp = date('d-m-Y',$row->due_timestamp);
+            $next_date = date("d-m-Y",strtotime(date("d-m-Y")."+ $days days"));
+            
+            if($timestamp == $next_date && $row->send_message == 0){
+                $this->send_message($row->client_id, $timestamp, $row->team_task_id);
+            }else{
+                $this->crud_model->create_db_log("No se han encontrado fechas de citas proximas");
+            }
+        }    
+    }
+
+    function send_message($client_id, $timestamp, $team_task_id){
+
+        $clients = $this->crud_model->get_clients_by_id($client_id);
+
+        $id_twilio = $this->db->get_where('settings', array('type' => 'twilio_id'))->row()->description;
+        $twilio_token = $this->db->get_where('settings', array('type' => 'twilio_token'))->row()->description;
+        $whatsapp_message = $this->db->get_where('settings', array('type' => 'whatsapp_message'))->row()->description;
+
+        $curl = curl_init();
+
+        curl_setopt($curl, CURLOPT_USERPWD, $id_twilio . ":" . $twilio_token);
+        
+        foreach($clients->result() as $row){
+            $message1 = str_replace('$nombre_cliente', $row->name, $whatsapp_message);
+            $message2 = str_replace('$fecha_cita', $timestamp, $message1);
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://api.twilio.com/2010-04-01/Accounts/'.$id_twilio.'/Messages.json',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => "From=whatsapp%3A%2B14155238886&Body=$message2&To=whatsapp%3A%2B521$row->phone",
+            ));
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+            $result = json_decode($response);
+
+            if($result->status == "queued"){
+                $this->crud_model->create_db_log("MENSAJE ENVIADO; DATA: ".$response);
+                $this->crud_model->update_status_message($team_task_id);
+            }
+            else{
+                $this->crud_model->create_db_log("MENSAJE NO ENVIADO; DATA: ".$response);
+            }
+        }
+    }
+
+    //ENVIA UN MENSAJE DE PRUEBA A UN NUMERO ESPECIFICO
+
+    function test_send_message_base($phone_number){
+
+        $id_twilio = $this->db->get_where('settings', array('type' => 'twilio_id'))->row()->description;
+        $twilio_token = $this->db->get_where('settings', array('type' => 'twilio_token'))->row()->description;
+        
+        $curl = curl_init();
+
+        curl_setopt($curl, CURLOPT_USERPWD, $id_twilio . ":" . $twilio_token);
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.twilio.com/2010-04-01/Accounts/'.$id_twilio.'/Messages.json',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => 'From=whatsapp%3A%2B14155238886&Body=Hola, este es un mensaje de prueba&To=whatsapp%3A%2B521'.$phone_number,
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        
+        $result = json_decode($response);
+
+        if($result->status == "queued"){
+            echo "Entregado";
+        }
+        else{
+            echo "No entregado";
+        }
     }
 
     //Payment settings

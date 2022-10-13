@@ -11,16 +11,22 @@
 
                 <?php echo form_open(site_url('admin/team_task/create'), array('class' => 'form-horizontal form-groups-bordered validate', 'enctype' => 'multipart/form-data')); ?>
 
+                <input type="hidden" class="form-control" name="task_title" id="task_title" value="">
+
                 <div class="form-group">
-                    <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('task_title');?></label>
-                    
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" name="task_title" data-validate="required" 
-                            data-message-required="<?php echo get_phrase('value_required');?>" value="">
+                    <label for="field-1" class="col-sm-3 control-label">Paciente</label>
+                    <div class="col-sm-7">
+                        <select class="selectboxit" name="client_id" id="client_id">
+                            <option value="" selected disabled hidden>Seleccione un cliente</option>
+                            <?php 
+                                $clients = $this->db->get('client')->result_array();
+                                foreach ($clients as $row): ?>
+                                    <option value="<?php echo $row['client_id'];?>"><?php echo $row['name'];?></option> <?php
+                                endforeach;
+                            ?>
+                        </select>
                     </div>
                 </div>
-
-                
 
                 <div class="form-group">
                     <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('creation_date');?></label>
@@ -51,6 +57,7 @@
                     
                     <div class="col-sm-8">
                         <select multiple="multiple" name="assigned_staff_ids[]" class="form-control multi-select">
+                            
                         <?php 
                                 $staffs     =   $this->db->get('staff')->result_array();
                                 foreach ($staffs as $row):
@@ -84,6 +91,18 @@
 </div>
 
 <script type="text/javascript">
+    $(document).ready(function() {
+
+        $(document).on('change', '#client_id', function(event) {
+            var id = document.getElementById('client_id').value;
+
+            var first_select = document.getElementById('client_id');
+            var selected = first_select.options[first_select.selectedIndex].text;
+
+            document.getElementById("task_title").value = selected;
+        });
+    });
+
     // Datepicker
         if($.isFunction($.fn.datepicker))
         {

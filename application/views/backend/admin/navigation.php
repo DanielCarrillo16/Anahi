@@ -741,6 +741,18 @@
 
                 </li>
 
+                <li class="<?php if ($page_name == 'smtp_settings') echo 'active';?>">
+
+                    <a href="<?php echo site_url('admin/whatsapp_settings'); ?>">
+
+                        <i class="entypo-dot"></i>
+
+                        <span>Configuración de mensaje de cita</span>
+
+                    </a>
+
+                </li>
+
                 <li class="<?php if ($page_name == 'payment_settings') echo 'active';?>">
 
                     <a href="<?php echo site_url('admin/payment_settings'); ?>">

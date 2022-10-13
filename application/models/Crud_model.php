@@ -467,6 +467,50 @@ class Crud_model extends CI_Model
         return $amount;
     }
 
+    function get_clients()
+    {
+        $this->db->select('*');
+        $this->db->from('client');
+        $clients = $this->db->get();
+
+        return $clients;
+    }
+
+    function get_clients_by_id($id)
+    {
+        $this->db->select('*');
+        $this->db->from('client');
+        $this->db->where('client_id', $id);
+        $client = $this->db->get();
+
+        return $client;
+    }
+
+    function update_status_message($team_task_id){
+        $data['send_message'] = "1";
+
+        $this->db->where('team_task_id', $team_task_id);
+        $this->db->update('team_task', $data);
+
+        return true;
+    }
+
+    function get_team_tasks()
+    {
+        $this->db->select('*');
+        $this->db->from('team_task');
+        $tasks = $this->db->get();
+
+        return $tasks;
+    }
+
+    function create_db_log($log){
+        $data['description'] = $log;
+        $data['date'] = strtotime("now");
+
+        $this->db->insert('logs', $data);
+    }
+
     function delete_project($project_code)
     {
         $project_milestone_id = $this->db->get_where('project_milestone', array(
@@ -1449,10 +1493,12 @@ class Crud_model extends CI_Model
     /////// TEAM TASK /////////
     function add_new_team_task()
     {
-        $data['task_title']         = $this->input->post('task_title');
+        $data['task_title']         = "Cita de: ".$this->input->post('task_title');
         $data['creation_timestamp'] = strtotime($this->input->post('creation_timestamp'));
         $data['due_timestamp']      = strtotime($this->input->post('due_timestamp'));
         $data['task_status']        = $this->input->post('task_status');
+        $data['client_id']        = $this->input->post('client_id');
+        $data['task_note']        = "[". date("d-m-Y") ."] - Se creó la cita";
         $data['assigned_staff_ids'] = '';
         if ($this->input->post('assigned_staff_ids') != "")
             foreach ($this->input->post('assigned_staff_ids') as $row)
@@ -1899,6 +1945,45 @@ function create_influencer()
 
         $data['description'] = $this->input->post('theme');
         $this->db->where('type', 'theme');
+        $this->db->update('settings', $data);
+
+        // TWILIO
+
+        $data['description'] = $this->input->post('twilio_id');
+        $this->db->where('type', 'twilio_id');
+        $this->db->update('settings', $data);
+
+        $data['description'] = $this->input->post('twilio_token');
+        $this->db->where('type', 'twilio_token');
+        $this->db->update('settings', $data);
+
+        $data['description'] = $this->input->post('whatsapp_message');
+        $this->db->where('type', 'whatsapp_message');
+        $this->db->update('settings', $data);
+
+        $data['description'] = $this->input->post('days');
+        $this->db->where('type', 'days');
+        $this->db->update('settings', $data);
+    }
+
+    function update_twilio_settings()
+    {
+        // TWILIO
+
+        $data['description'] = $this->input->post('twilio_id');
+        $this->db->where('type', 'twilio_id');
+        $this->db->update('settings', $data);
+
+        $data['description'] = $this->input->post('twilio_token');
+        $this->db->where('type', 'twilio_token');
+        $this->db->update('settings', $data);
+
+        $data['description'] = $this->input->post('whatsapp_message');
+        $this->db->where('type', 'whatsapp_message');
+        $this->db->update('settings', $data);
+
+        $data['description'] = $this->input->post('days');
+        $this->db->where('type', 'days');
         $this->db->update('settings', $data);
     }
 
