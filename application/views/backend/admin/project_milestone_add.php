@@ -17,9 +17,11 @@
                     <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('title'); ?></label>
 
                     <div class="col-sm-7">
-                        <select name="title_service" id="title_service" class="form-control selectboxit">
+                        <select name="title_service" id="title_service" class="form-control selectboxit" onchange="changeSelect();">
                             <option value="">-</option>
                             <?php 
+                                $service_products = $this->db->get('service_products')->result_array();
+                                $products = $this->db->get('product')->result_array();
                                 $services_list = $this->db->get('servicios');
                                 foreach ($services_list->result() as $row)
                                 {
@@ -104,6 +106,44 @@
 
 
 <script type="text/javascript">
+
+    let servicesProducts = [];
+    let products = [];
+    let realProducts = [];
+
+    <?php foreach ($service_products as $product) : ?>
+        servicesProducts.push(<?php echo json_encode($product); ?>);
+    <?php endforeach; ?>
+
+    <?php foreach ($products as $product) : ?>
+        products.push(<?php echo json_encode($product); ?>);
+    <?php endforeach; ?>
+
+    function changeSelect(){
+        var idx = document.getElementById('title_service').value;
+        realProducts = servicesProducts.filter(i => i.id_service == idx);
+        console.log(realProducts);
+        for(let i = 0; i < realProducts.length; i++)
+        {
+            var aux = realProducts[i].id_product;
+            var id = products.findIndex(i => i.product_id == aux);
+            var left = products[id].existencia - realProducts[i].quantity;
+            realProducts[i].quantity = left;
+        }
+    }
+    $('form').submit(function() {
+
+        let sanitizeProducts = JSON.stringify(realProducts).replace(/'/g, '"');
+        $('form').append(`<input hidden name="realProducts" value='${sanitizeProducts}' /> `);
+
+        // let sanitize = JSON.stringify(productsUpdate).replace(/'/g, '"');
+        // $('form').append(`<input hidden name="productsUpdate" value='${sanitize}' /> `);
+
+        return true;
+    });
+
+
+
     // ajax form plugin calls at each modal loading,
 $(document).ready(function() {
 
