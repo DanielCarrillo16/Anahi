@@ -1266,14 +1266,26 @@ class Crud_model extends CI_Model
         $data['timestamp']    = strtotime($this->input->post('timestamp'));
         $data['status']       = $this->input->post('status');
         $data['note']         = $this->input->post('note');
+        $products	=	json_decode($this->input->post('realProducts'));
         $data['client_id']    = $this->db->get_where('project', array(
             'project_code' => $project_code
         ))->row()->client_id;
         $data['company_id']   = $this->db->get_where('project', array(
             'project_code' => $project_code
         ))->row()->company_id;
+        $idx =$this->input->post('title_service');
+        
+        if($data['status'] == 1){
+            foreach($products as $producto){
+                if($producto->id_service == $this->input->post('title_service'))
+                {
+                    $this->db->where('product_id', $producto->id_product);
+                    $dataP['existencia'] = $producto->quantity;
+                    $this->db->update('product', $dataP);
+                }
+            }
+        }
         $this->db->insert('project_milestone', $data);
-
     }
 
     function edit_project_milestone($project_milestone_id = '')
@@ -1284,8 +1296,22 @@ class Crud_model extends CI_Model
         $data['timestamp'] = strtotime($this->input->post('timestamp'));
         $data['status']    = $this->input->post('status');
         $data['note']      = $this->input->post('note');
+        $products	=	json_decode($this->input->post('realProducts'));
+
+        if($data['status'] == 1){
+            foreach($products as $producto){
+                if($producto->id_service == $this->input->post('title_service'))
+                {
+                    $this->db->where('product_id', $producto->id_product);
+                    $dataP['existencia'] = $producto->quantity;
+                    $this->db->update('product', $dataP);
+                }
+            }
+        }
+
         $this->db->where('project_milestone_id', $project_milestone_id);
         $this->db->update('project_milestone', $data);
+
     }
 
     function delete_project_milestone($project_milestone_id = '')
@@ -2302,9 +2328,22 @@ function create_influencer()
         $data['visible_for']          = '';
         $data['publicado_por']          =  $this->session->userdata('login_user_id');
         $data['file'] = $_FILES['userfile']['name'];
-
-          
+        $services  = json_decode($this->input->post('serviceProducts'));
+        // $productos = json_decode($this->input->post('productsUpdate'));
         $this->db->insert('servicios', $data);
+        $idx = $this->db->insert_id();
+        foreach($services as $service){
+            $data2['id_service'] = $idx;
+            $data2['id_product'] = $service->id_product;
+            $data2['quantity'] = $service->quantity;
+            $data2['left_quantity'] = $service->left_quantity;
+            $this->db->insert('service_products', $data2);    
+        }
+        // foreach($productos as $producto){
+        //     $this->db->where('product_id', $producto->id);
+        //     $dataP['existencia'] = $producto->quantity;
+        //     $this->db->update('product', $dataP);
+        // }
         $recipe_id = $this->db->insert_id();
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/servicios_file/' . $_FILES['userfile']['name']);
 
