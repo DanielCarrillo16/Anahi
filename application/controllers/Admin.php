@@ -1363,6 +1363,46 @@ class Admin extends CI_Controller
         }    
     }
 
+    //REVISA DIARIAMENTE SI HAY UN AVISO RECURRENTE
+    //CRON JOB
+
+    function check_notice(){
+        $notices = $this->crud_model->get_all_notices();
+        
+        $today = date('Y-m-d');
+        
+        foreach($notices->result() as $row){
+            if($row->next_date == $today && $row->is_recurrent == 1){
+                $this->crud_model->create_db_log("Notificación: ".$row->description.". Ha sido llamado para enviar mensaje");
+
+                //MANDA LOS MENSAJES AL DESTINO
+                $this->send_messages_noticeboard($row->notice_id);
+
+                //ACTUALIZA LA SIGUIENTE FECHA
+                $data['next_date']   = date("Y-m-d",strtotime($today."+ $row->quantity $row->recurrency"));
+
+                $this->db->where('notice_id', $row->notice_id);
+                $this->db->update('notice', $data);
+            }
+        }    
+    }
+
+    //FUNCION DE LA VISTA, OBTIENE A QUIÉN VA A IR LOS MENSAJES
+    function send_messages_noticeboard($notice_id){
+        //A quién van a ir los mensajes
+        $send_to = $this->db->get_where('notice', array('notice_id' => $notice_id))->row()->send_to;
+        //El mensaje
+        $message = $this->db->get_where('notice', array('notice_id' => $notice_id))->row()->description;
+
+        if($send_to == "client"){
+            $this->send_notice_client($message);
+        }elseif($send_to == "staff"){
+            $this->send_notice_staff($message);
+        }else{
+            echo "error";
+        }
+    }
+
     function send_message($client_id, $timestamp, $team_task_id){
 
         $clients = $this->crud_model->get_clients_by_id($client_id);
@@ -1401,6 +1441,66 @@ class Admin extends CI_Controller
             }
             else{
                 $this->crud_model->create_db_log("MENSAJE NO ENVIADO; DATA: ".$response);
+            }
+        }
+    }
+
+    function send_notice_message($phone, $message){
+
+        $id_twilio = $this->db->get_where('settings', array('type' => 'twilio_id'))->row()->description;
+        $twilio_token = $this->db->get_where('settings', array('type' => 'twilio_token'))->row()->description;
+
+        $curl = curl_init();
+
+        curl_setopt($curl, CURLOPT_USERPWD, $id_twilio . ":" . $twilio_token);
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.twilio.com/2010-04-01/Accounts/'.$id_twilio.'/Messages.json',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => "From=whatsapp%3A%2B14155238886&Body=$message&To=whatsapp%3A%2B521$phone",
+        ));
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        $result = json_decode($response);
+
+        if($result->status == "queued"){
+            $this->crud_model->create_db_log("MENSAJE ENVIADO; DATA: ".$response);
+        }
+        else{
+            $this->crud_model->create_db_log("MENSAJE NO ENVIADO; DATA: ".$response); 
+        }
+    }
+
+    //Consulta todos los usuarios de staff
+    function send_notice_staff($message){
+
+        $staff = $this->crud_model->get_staff();
+
+        foreach($staff->result() as $row){
+            if($row->phone == ""){
+                echo ("Staff ".$row->name." no tiene número de telefono, revise los datos");
+            }else{
+                $this->send_notice_message($row->phone, $message);
+            }
+        }
+    }
+    //Consulta todos los usuarios de cliente
+    function send_notice_client($message){
+
+        $clients = $this->crud_model->get_clients();
+        
+        foreach($clients->result() as $row){
+            if($row->phone == ""){
+                echo ("Cliente ".$row->name." no tiene número de telefono, revise los datos");
+            }else{
+                $this->send_notice_message($row->phone, $message);
             }
         }
     }

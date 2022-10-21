@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <div class="panel-title">
       <i class="fa fa-flag-checkered"></i>
-      <?php echo get_phrase('noticeboard');?>
+      <?php echo get_phrase('whatsapp_messages');?>
     </div>
   </div>
   <div class="panel-body" >
@@ -14,7 +14,8 @@
     			<th><div><?php echo get_phrase('title');?></div></th>
     			<th><div><?php echo get_phrase('published_by');?></div></th>
     			<th><div><?php echo get_phrase('date_added');?></div></th>
-    			<th><div><?php echo get_phrase('visible_for');?></div></th>
+          <th><div><?php echo get_phrase('recurrency');?></div></th>
+    			<th><div><?php echo get_phrase('send_to');?></div></th>
     			<th><div><?php echo get_phrase('options');?></div></th>
     		</tr>
     	</thead>
@@ -45,14 +46,23 @@
     			<td>
     				<?php echo date('jS F Y' , $row['date_added']);?>
     			</td>
+
+          <td>
+    			  <?php
+              if ($row['is_recurrent'] == '1') {
+                echo get_phrase('yes');
+              } elseif ($row['is_recurrent'] == '0') {
+                echo get_phrase('no');
+              }
+            ?>
+    			</td>
+
     			<td>
     			  <?php
-              if ($row['visible_for'] == 1) {
-                echo get_phrase('all');
-              } elseif ($row['visible_for'] == 2) {
-                echo get_phrase('staffs');
-              } else {
-                echo get_phrase('clients');
+              if ($row['send_to'] == 'client') {
+                echo get_phrase('client');
+              } elseif ($row['send_to'] == 'staff') {
+                echo get_phrase('staff');
               }
             ?>
     			</td>

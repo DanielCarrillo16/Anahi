@@ -476,6 +476,15 @@ class Crud_model extends CI_Model
         return $clients;
     }
 
+    function get_staff()
+    {
+        $this->db->select('*');
+        $this->db->from('staff');
+        $staff = $this->db->get();
+
+        return $staff;
+    }
+
     function get_clients_by_id($id)
     {
         $this->db->select('*');
@@ -504,9 +513,18 @@ class Crud_model extends CI_Model
         return $tasks;
     }
 
+    function get_all_notices()
+    {
+        $this->db->select('*');
+        $this->db->from('notice');
+        $notices = $this->db->get();
+
+        return $notices;
+    }
+
     function create_db_log($log){
         $data['description'] = $log;
-        $data['date'] = strtotime("now");
+        $data['date'] = date("Y-m-d H:i:s");
 
         $this->db->insert('logs', $data);
     }
@@ -2238,11 +2256,23 @@ function create_influencer()
 
     function create_notice()
     {
+        $today = date("Y-m-d");
+        $quantity = $this->input->post('quantity');
+        $recurrency = $this->input->post('recurrency');
+
         $data['title']        = $this->input->post('title');
         $data['description']  = $this->input->post('description');
-        $data['visible_for']  = $this->input->post('visible_for');
+        $data['visible_for']  = '1';
+        $data['send_to']      = $this->input->post('visible_for');
         $data['published_by'] = $this->session->userdata('login_user_id');
         $data['date_added']   = strtotime(date("Y-m-d H:i:s"));
+        $data['is_recurrent'] = $this->input->post('is_recurrent');
+        $data['quantity']     = $quantity;
+        $data['recurrency']   = $recurrency;
+
+        if($data['is_recurrent'] == '1'){
+            $data['next_date'] = date("Y-m-d",strtotime($today."+ $quantity $recurrency"));
+        }
 
         $this->db->insert('notice', $data);
     }
@@ -2251,9 +2281,13 @@ function create_influencer()
     {
         $data['title']         = $this->input->post('title');
         $data['description']   = $this->input->post('description');
-        $data['visible_for']   = $this->input->post('visible_for');
+        $data['visible_for']   = '1';
+        $data['send_to']      = $this->input->post('visible_for');
         $data['published_by']  = $this->session->userdata('login_user_id');
         $data['last_modified'] = strtotime(date("Y-m-d H:i:s"));
+        $data['is_recurrent'] = $this->input->post('is_recurrent');
+        $data['quantity']     = $this->input->post('quantity');
+        $data['recurrency']   = $this->input->post('recurrency');
 
         $this->db->where('notice_id', $notice_id);
         $this->db->update('notice', $data);
