@@ -381,7 +381,7 @@
 
                 <i class="entypo-newspaper"></i>
 
-                <span><?php echo get_phrase('noticeboard'); ?></span>
+                <span><?php echo get_phrase('whatsapp_messages'); ?></span>
 
             </a>
 
@@ -736,18 +736,6 @@
                         <i class="entypo-dot"></i>
 
                         <span><?php echo get_phrase('smtp_settings'); ?></span>
-
-                    </a>
-
-                </li>
-
-                <li class="<?php if ($page_name == 'smtp_settings') echo 'active';?>">
-
-                    <a href="<?php echo site_url('admin/whatsapp_settings'); ?>">
-
-                        <i class="entypo-dot"></i>
-
-                        <span>Configuración de mensaje de cita</span>
 
                     </a>
 

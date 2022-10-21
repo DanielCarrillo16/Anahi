@@ -481,7 +481,7 @@
     "all": "Todo",
     "private_messaging": "Mensajeria privada",
     "new_message": "Nuevo mensaje",
-    "messages": "Mensajes",
+    "messages": "Mensaje",
     "notes": "Notas",
     "create_note": "Crear nota",
     "untitled": "Sin Título",
@@ -960,5 +960,14 @@
     "precio": "Precio",
     "add_servicios": "Add servicios",
     "sadsf": "Sadsf",
-    "zsfsdgfdf": "Zsfsdgfdf"
+    "zsfsdgfdf": "Zsfsdgfdf",
+    "send_to": "Enviar a",
+    "whatsapp_messages": "Notificaciones de WhatsApp",
+    "recurrency": "Recurrente",
+    "days": "Dias",
+    "weeks": "Semanas",
+    "months": "Meses",
+    "years": "Años",
+    "recurrent": "Recurrencia"
+    
 }
