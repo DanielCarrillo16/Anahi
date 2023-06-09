@@ -965,6 +965,23 @@ class Admin extends CI_Controller
         $this->load->view('backend/index', $page_data);
     }
 
+    function recordatorio($param1 = '', $param2 = '', $param3 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            $this->session->set_userdata('last_page', current_url());
+            redirect(base_url(), 'refresh');
+        }
+        if ($param1 == 'save') {
+            $this->crud_model->save_note($param2); // param2 = note id
+        }
+        if ($param1 == 'delete') {
+            $this->crud_model->delete_note($param2); // param2 = note id
+        }
+        $page_data['page_name']  = 'note';
+        $page_data['page_title'] = get_phrase('notes');
+        $this->load->view('backend/index', $page_data);
+    }
+
     // note lists, ajax based ( similar to ios note )
     function note($param1 = '', $param2 = '', $param3 = '')
     {
